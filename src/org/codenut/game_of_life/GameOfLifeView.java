@@ -3,15 +3,18 @@ package org.codenut.game_of_life;
 import android.content.Context;
 import android.graphics.*;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
+import android.widget.Toast;
 
 
-public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callback {
+public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callback, View.OnTouchListener {
 
     private final int PADDING = 1;
     private final int CELL_SIZE = 10;
-    private final long SLEEP = 5;
+    private final long SLEEP = 50;
 
     private Paint gridPainter;
     private Paint cellPainter;
@@ -22,14 +25,24 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
 
     private class GameThread extends Thread {
         private GameOfLifeView view;
+        private boolean shouldRun = true;
 
         public GameThread(GameOfLifeView view) {
             this.view = view;
         }
 
+        public boolean isRunning() {
+            return shouldRun;
+        }
+
+        public void setRunning(final boolean shouldRun) {
+            this.shouldRun = shouldRun;
+        }
+
+
         @Override
         public void run() {
-            for (int i = 0; i < 100; i++) {
+            while (shouldRun) {
                 Canvas canvas = null;
                 try {
                     canvas = getHolder().lockCanvas();
@@ -51,6 +64,7 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
 
     public GameOfLifeView(Context context, AttributeSet attributes) {
         super(context, attributes);
+        setOnTouchListener(this);
         getHolder().addCallback(this);
         gridPainter = new Paint();
         gridPainter.setColor(Color.DKGRAY);
@@ -105,6 +119,15 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
+        thread.setRunning(false);
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_UP) {
+            Toast.makeText(getContext(), "Stop touching me!", Toast.LENGTH_LONG).show();
+        }
+        return true;
     }
 }
 
