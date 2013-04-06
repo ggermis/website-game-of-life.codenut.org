@@ -40,7 +40,7 @@ public class World {
     }
 
     public boolean isDirty() {
-        return dirtyCells.size() > 0;
+        return getDirtyCells().size() > 0;
     }
 
     public Cell getCellAt(int x, int y) {
@@ -54,7 +54,7 @@ public class World {
     public Cell markAlive(Cell cell) {
         Cell ret = cell.markAlive();
         if (cell.isDirty()) {
-            dirtyCells.add(cell);
+            getDirtyCells().add(cell);
         }
         return ret;
     }
@@ -66,7 +66,7 @@ public class World {
     public Cell markDead(Cell cell) {
         Cell ret = cell.markDead();
         if (cell.isDirty()) {
-            dirtyCells.add(cell);
+            getDirtyCells().add(cell);
         }
         return ret;
     }
@@ -96,9 +96,22 @@ public class World {
         return livingNeighbours;
     }
 
+
     public Collection<Cell> getLivingCells() {
         return livingCells.values();
     }
+
+    public Collection<Cell> getDirtyCells() {
+        return dirtyCells;
+    }
+
+    public Collection<Cell> getTrackedCells() {
+        Collection<Cell> trackedCells = new HashSet<Cell>();
+        trackedCells.addAll(getLivingCells());
+        trackedCells.addAll(getDirtyCells());
+        return trackedCells;
+    }
+
 
     public void tick() {
         applyRules();
@@ -113,7 +126,7 @@ public class World {
 
     private Set<Cell> getCellsToApplyRulesTo() {
         Set<Cell> cells = new HashSet<Cell>();
-        for (Cell cell : getLivingCells()) {
+        for (Cell cell : getTrackedCells()) {
             cells.add(cell);
             for (Position.Border border : Position.Border.values()) {
                 final Position position = cell.getPosition().getNeighbourPosition(border);
@@ -124,7 +137,7 @@ public class World {
     }
 
     public void transition() {
-        for (Cell cell : dirtyCells) {
+        for (Cell cell : getDirtyCells()) {
             cell.transition();
             if (cell.isAlive()) {
                 livingCells.put(cell.getPosition(), cell);
