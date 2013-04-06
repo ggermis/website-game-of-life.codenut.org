@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 
 
 public class WorldTest {
+
     @Test
     public void hasASize() {
         World world = new World(15, 25);
@@ -34,14 +35,14 @@ public class WorldTest {
         final World world = new World(10, 10);
         return new Object[][] {
                 { world, new Cell(new Position(3, 2)), 8 }, // center
-                { world, new Cell(new Position(0, 0)), 3 }, // top left
-                { world, new Cell(new Position(3, 0)), 5 }, // top
-                { world, new Cell(new Position(world.getWidth()-1, 0)), 3 }, // top right
-                { world, new Cell(new Position(world.getWidth()-1, 3)), 5 }, // right
-                { world, new Cell(new Position(world.getWidth()-1, world.getHeight()-1)), 3 }, // bottom right
-                { world, new Cell(new Position(3, world.getHeight()-1)), 5 }, // bottom
-                { world, new Cell(new Position(0, world.getHeight()-1)), 3 }, // bottom left
-                { world, new Cell(new Position(0, 3)), 5 }, // left
+                { world, new Cell(new Position(0, 0)), 8 }, // top left
+                { world, new Cell(new Position(3, 0)), 8 }, // top
+                { world, new Cell(new Position(world.getWidth()-1, 0)), 8 }, // top right
+                { world, new Cell(new Position(world.getWidth()-1, 3)), 8 }, // right
+                { world, new Cell(new Position(world.getWidth()-1, world.getHeight()-1)), 8 }, // bottom right
+                { world, new Cell(new Position(3, world.getHeight()-1)), 8 }, // bottom
+                { world, new Cell(new Position(0, world.getHeight()-1)), 8 }, // bottom left
+                { world, new Cell(new Position(0, 3)), 8 }, // left
         };
     }
 
@@ -56,6 +57,7 @@ public class WorldTest {
         world.markAliveAt(5, 3);
         world.markAliveAt(2, 1);
         world.markAliveAt(7, 2);
+        world.transition();
         Assert.assertEquals(3, world.getLivingCells().size());
     }
 

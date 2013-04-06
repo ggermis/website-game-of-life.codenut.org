@@ -11,7 +11,7 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
 
     private final int PADDING = 1;
     private final int CELL_SIZE = 10;
-    private final long SLEEP = 50;
+    private final long SLEEP = 5;
 
     private Paint gridPainter;
     private Paint cellPainter;

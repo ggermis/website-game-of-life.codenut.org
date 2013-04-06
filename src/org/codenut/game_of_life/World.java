@@ -1,19 +1,17 @@
 package org.codenut.game_of_life;
 
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class World {
 
 
-    private Set<Cell> livingCells;
+    private Map<Position, Cell> livingCells;
     private Set<Cell> dirtyCells;
 
-    private Cell[][] cells;
     private RuleSet ruleSet;
+    private int width;
+    private int height;
 
 
     public World() {
@@ -25,24 +23,20 @@ public class World {
     }
 
     public World(int width, int height, final RuleSet ruleSet) {
-        cells = new Cell[width][height];
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                cells[x][y] = new Cell(new Position(x, y));
-            }
-        }
+        this.width = width;
+        this.height = height;
         this.ruleSet = ruleSet;
         this.dirtyCells = new HashSet<Cell>();
-        this.livingCells = new HashSet<Cell>();
+        this.livingCells = new HashMap<Position, Cell>();
     }
 
 
     public int getWidth() {
-        return cells.length;
+        return width;
     }
 
     public int getHeight() {
-        return cells[0].length;
+        return height;
     }
 
     public boolean isDirty() {
@@ -50,11 +44,11 @@ public class World {
     }
 
     public Cell getCellAt(int x, int y) {
-        return cells[x][y];
+        return new Cell(new Position(x, y));
     }
 
     public Cell markAliveAt(int x, int y) {
-        return markAlive(cells[x][y]);
+        return markAlive(getCellAt(x, y));
     }
 
     public Cell markAlive(Cell cell) {
@@ -66,7 +60,7 @@ public class World {
     }
 
     public Cell markDeadAt(int x, int y) {
-        return markDead(cells[x][y]);
+        return markDead(getCellAt(x, y));
     }
 
     public Cell markDead(Cell cell) {
@@ -82,10 +76,12 @@ public class World {
         final Position position = cell.getPosition();
         List<Cell> neighbours = new ArrayList<Cell>();
         for (Position.Border border : Position.Border.values()) {
-            if (position.hasNeighbourAt(border, this)) {
-                Position neighbourPosition = position.getNeighbourPosition(border);
-                neighbours.add(getCellAt(neighbourPosition.getX(), neighbourPosition.getY()));
+            Position neighbourPosition = position.getNeighbourPosition(border);
+            Cell neighbour = livingCells.get(neighbourPosition);
+            if (neighbour == null) {
+                neighbour = getCellAt(neighbourPosition.getX(), neighbourPosition.getY());
             }
+            neighbours.add(neighbour);
         }
         return neighbours;
     }
@@ -100,8 +96,8 @@ public class World {
         return livingNeighbours;
     }
 
-    public Set<Cell> getLivingCells() {
-        return livingCells;
+    public Collection<Cell> getLivingCells() {
+        return livingCells.values();
     }
 
     public void tick() {
@@ -117,13 +113,11 @@ public class World {
 
     private Set<Cell> getCellsToApplyRulesTo() {
         Set<Cell> cells = new HashSet<Cell>();
-        for (Cell cell : livingCells) {
+        for (Cell cell : getLivingCells()) {
             cells.add(cell);
             for (Position.Border border : Position.Border.values()) {
-                if (cell.getPosition().hasNeighbourAt(border, this)) {
-                    final Position position = cell.getPosition().getNeighbourPosition(border);
-                    cells.add(getCellAt(position.getX(), position.getY()));
-                }
+                final Position position = cell.getPosition().getNeighbourPosition(border);
+                cells.add(getCellAt(position.getX(), position.getY()));
             }
         }
         return cells;
@@ -133,23 +127,12 @@ public class World {
         for (Cell cell : dirtyCells) {
             cell.transition();
             if (cell.isAlive()) {
-                livingCells.add(cell);
+                livingCells.put(cell.getPosition(), cell);
             } else {
-                livingCells.remove(cell);
+                livingCells.remove(cell.getPosition());
             }
         }
         dirtyCells = new HashSet<Cell>();
-    }
-
-
-    public void show() {
-        for (int y = 0; y < getHeight(); y++) {
-            for (int x = 0; x < getWidth(); x++) {
-                System.err.print(cells[x][y].toString());
-            }
-            System.err.print("\n");
-        }
-        System.err.println("");
     }
 
 
@@ -158,17 +141,4 @@ public class World {
         return String.format("[World: %d, %d]", getWidth(), getHeight());
     }
 
-
-    public static void main(String[] args) {
-        final World world = new World(20, 10);
-
-        world.markAliveAt(5, 3);
-        world.markAliveAt(6, 3);
-        world.markAliveAt(6, 2);
-        world.markAliveAt(6, 1);
-
-        world.show();
-        world.tick();
-        world.show();
-    }
 }

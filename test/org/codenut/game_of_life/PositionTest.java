@@ -14,16 +14,6 @@ public class PositionTest {
         Assert.assertEquals(8, position.getY());
     }
 
-    @Test(expectedExceptions = PositionException.class)
-    public void noNegativeXIndicesAllowed() {
-        new Position(-1, 3);
-    }
-
-    @Test(expectedExceptions = PositionException.class)
-    public void noNegativeYIndicesAllowed() {
-        new Position(4, -3);
-    }
-
 
     @DataProvider(name = "neighbourPositionDataProvider")
     public Object[][] neighbourPositionDataProvider() {
@@ -43,23 +33,6 @@ public class PositionTest {
     @Test(dataProvider = "neighbourPositionDataProvider")
     public void neighbourPosition(final Position position, final Position.Border border, final Position expectedPosition) {
         Assert.assertEquals(expectedPosition, position.getNeighbourPosition(border));
-    }
-
-
-    @DataProvider(name = "hasNeighbourDataProvider")
-    public Object[][] hasNeighbourDataProvider() {
-        final World world = new World(10, 10);
-        return new Object[][] {
-                {new Position(0, 0), Position.Border.WEST, world, false},
-                {new Position(0, 0), Position.Border.NORTH, world, false},
-                {new Position(0, 0), Position.Border.EAST, world, true},
-                {new Position(0, 0), Position.Border.SOUTH, world, true},
-        };
-    }
-
-    @Test(dataProvider = "hasNeighbourDataProvider")
-    public void hasNeighbour(final Position position, final Position.Border border, final World world, final boolean expected) {
-        Assert.assertEquals(expected, position.hasNeighbourAt(border, world));
     }
 
 }
