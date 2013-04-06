@@ -11,7 +11,6 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
 
     private final int PADDING = 1;
     private final int CELL_SIZE = 10;
-
     private final long SLEEP = 50;
 
     private Paint gridPainter;
@@ -53,16 +52,13 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
     public GameOfLifeView(Context context, AttributeSet attributes) {
         super(context, attributes);
         getHolder().addCallback(this);
-        thread = new GameThread(this);
-        init();
-    }
-
-    private void init() {
         gridPainter = new Paint();
         gridPainter.setColor(Color.DKGRAY);
         cellPainter = new Paint();
         cellPainter.setColor(Color.CYAN);
+        thread = new GameThread(this);
     }
+
 
     public void setWorld(final World world) {
         this.world = world;
@@ -109,12 +105,6 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-        try {
-            thread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        thread = null;
     }
 }
 
