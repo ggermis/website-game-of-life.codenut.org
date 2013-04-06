@@ -31,10 +31,6 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
             this.view = view;
         }
 
-        public boolean isRunning() {
-            return shouldRun;
-        }
-
         public void setRunning(final boolean shouldRun) {
             this.shouldRun = shouldRun;
         }
