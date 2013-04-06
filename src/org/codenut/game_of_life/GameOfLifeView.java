@@ -12,7 +12,7 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
     private final int PADDING = 1;
     private final int CELL_SIZE = 10;
 
-    private final long SLEEP = 5;
+    private final long SLEEP = 50;
 
     private Paint gridPainter;
     private Paint cellPainter;
@@ -30,7 +30,7 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
 
         @Override
         public void run() {
-            for (int i = 0; i < 1000; i++) {
+            for (int i = 0; i < 100; i++) {
                 Canvas canvas = null;
                 try {
                     canvas = getHolder().lockCanvas();

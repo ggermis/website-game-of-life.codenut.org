@@ -28,13 +28,13 @@ public class CellTest {
     @Test
     public void deadCellCanBeRevived() {
         Cell deadCell = createDeadCell();
-        Assert.assertTrue(deadCell.revive().isAlive());
+        Assert.assertTrue(deadCell.markAlive().transition().isAlive());
     }
 
     @Test
     public void livingCellCanBeKilled() {
         Cell livingCell = createLivingCell();
-        Assert.assertTrue(livingCell.kill().isDead());
+        Assert.assertTrue(livingCell.markDead().transition().isDead());
     }
 
     @Test

@@ -53,9 +53,9 @@ public class WorldTest {
     @Test
     public void countLivingCells() {
         final World world = new World();
-        world.getCellAt(5, 3).revive();
-        world.getCellAt(2, 1).revive();
-        world.getCellAt(7, 2).revive();
+        world.markAliveAt(5, 3);
+        world.markAliveAt(2, 1);
+        world.markAliveAt(7, 2);
         Assert.assertEquals(3, world.getLivingCells().size());
     }
 

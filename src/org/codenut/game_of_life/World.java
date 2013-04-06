@@ -162,10 +162,10 @@ public class World {
     public static void main(String[] args) {
         final World world = new World(20, 10);
 
-        world.getCellAt(5, 3).revive();
-        world.getCellAt(6, 3).revive();
-        world.getCellAt(6, 2).revive();
-        world.getCellAt(6, 1).revive();
+        world.markAliveAt(5, 3);
+        world.markAliveAt(6, 3);
+        world.markAliveAt(6, 2);
+        world.markAliveAt(6, 1);
 
         world.show();
         world.tick();

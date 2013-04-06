@@ -5,11 +5,13 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class DefaultRuleSetTest {
+
     @Test
     public void livingCellWithFewerThanTwoNeighboursDies() {
         final RuleSet rules = new DefaultRuleSet();
         final World world = new World(10, 10);
-        final Cell cell = world.getCellAt(5, 2).revive();
+        final Cell cell = world.markAliveAt(5, 2);
+        world.transition();
         Assert.assertTrue(cell.isAlive());
         rules.apply(world, cell);
         world.transition();
@@ -20,11 +22,12 @@ public class DefaultRuleSetTest {
     public void livingCellWithMoreThanThreeNeighboursDies() {
         final RuleSet rules = new DefaultRuleSet();
         final World world = new World(10, 10);
-        final Cell cell = world.getCellAt(5, 2).revive();
-        world.getCellAt(5, 3).revive();
-        world.getCellAt(6, 3).revive();
-        world.getCellAt(6, 2).revive();
-        world.getCellAt(6, 1).revive();
+        final Cell cell = world.markAliveAt(5, 2);
+        world.markAliveAt(5, 3);
+        world.markAliveAt(6, 3);
+        world.markAliveAt(6, 2);
+        world.markAliveAt(6, 1);
+        world.transition();
         Assert.assertTrue(cell.isAlive());
         rules.apply(world, cell);
         world.transition();
@@ -36,9 +39,10 @@ public class DefaultRuleSetTest {
         final RuleSet rules = new DefaultRuleSet();
         final World world = new World(10, 10);
         final Cell cell = world.getCellAt(5, 2);
-        world.getCellAt(5, 3).revive();
-        world.getCellAt(6, 3).revive();
-        world.getCellAt(6, 2).revive();
+        world.markAliveAt(5, 3);
+        world.markAliveAt(6, 3);
+        world.markAliveAt(6, 2);
+        world.transition();
         Assert.assertTrue(cell.isDead());
         rules.apply(world, cell);
         world.transition();

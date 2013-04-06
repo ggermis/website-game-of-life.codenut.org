@@ -27,6 +27,7 @@ public class Cell {
         return position;
     }
 
+
     public boolean isAlive() {
         return state == State.ALIVE;
     }
@@ -40,19 +41,9 @@ public class Cell {
     }
 
 
-    public Cell revive() {
-        markAlive();
-        return transition();
-    }
-
     public Cell markAlive() {
         markAs(State.ALIVE);
         return this;
-    }
-
-    public Cell kill() {
-        markDead();
-        return transition();
     }
 
     public Cell markDead() {
