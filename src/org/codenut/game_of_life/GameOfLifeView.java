@@ -1,27 +1,59 @@
 package org.codenut.game_of_life;
 
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Rect;
+import android.graphics.*;
 import android.util.AttributeSet;
+import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.View;
 
-public class GameOfLifeView extends View {
+
+public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callback {
 
     private final int PADDING = 1;
     private final int CELL_SIZE = 10;
+
+    private final long SLEEP = 5;
 
     private Paint gridPainter;
     private Paint cellPainter;
 
     private World world;
+    private GameThread thread;
 
+
+    private class GameThread extends Thread {
+        private GameOfLifeView view;
+
+        public GameThread(GameOfLifeView view) {
+            this.view = view;
+        }
+
+        @Override
+        public void run() {
+            for (int i = 0; i < 1000; i++) {
+                Canvas canvas = null;
+                try {
+                    canvas = getHolder().lockCanvas();
+                    synchronized (getHolder()) {
+                        view.onDraw(canvas);
+                    }
+                    world.tick();
+                    sleep(SLEEP);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } finally {
+                    if (canvas != null) {
+                        getHolder().unlockCanvasAndPost(canvas);
+                    }
+                }
+            }
+        }
+    }
 
     public GameOfLifeView(Context context, AttributeSet attributes) {
         super(context, attributes);
+        getHolder().addCallback(this);
+        thread = new GameThread(this);
         init();
     }
 
@@ -47,7 +79,8 @@ public class GameOfLifeView extends View {
         int width = Math.min(world.getWidth() * CELL_SIZE, getMeasuredWidth());
         int height = Math.min(world.getHeight() * CELL_SIZE, getMeasuredHeight());
 
-        // draw grid
+        // draw canvas
+        canvas.drawColor(Color.BLACK);
         for (int y = 0; y <= height; y += CELL_SIZE) {
             canvas.drawLine(0, y, width, y, gridPainter);
         }
@@ -63,6 +96,25 @@ public class GameOfLifeView extends View {
             int bottom = top + CELL_SIZE - 2 * PADDING;
             canvas.drawRect(new Rect(left, top, right, bottom), cellPainter);
         }
+    }
+
+    @Override
+    public void surfaceCreated(SurfaceHolder holder) {
+        thread.start();
+    }
+
+    @Override
+    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+    }
+
+    @Override
+    public void surfaceDestroyed(SurfaceHolder holder) {
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        thread = null;
     }
 }
 

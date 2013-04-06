@@ -2,10 +2,15 @@ package org.codenut.game_of_life;
 
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class World {
 
+
+    private Set<Cell> livingCells;
+    private Set<Cell> dirtyCells;
 
     private Cell[][] cells;
     private RuleSet ruleSet;
@@ -27,6 +32,8 @@ public class World {
             }
         }
         this.ruleSet = ruleSet;
+        this.dirtyCells = new HashSet<Cell>();
+        this.livingCells = new HashSet<Cell>();
     }
 
 
@@ -38,10 +45,38 @@ public class World {
         return cells[0].length;
     }
 
+    public boolean isDirty() {
+        return dirtyCells.size() > 0;
+    }
 
     public Cell getCellAt(int x, int y) {
         return cells[x][y];
     }
+
+    public Cell markAliveAt(int x, int y) {
+        return markAlive(cells[x][y]);
+    }
+
+    public Cell markAlive(Cell cell) {
+        Cell ret = cell.markAlive();
+        if (cell.isDirty()) {
+            dirtyCells.add(cell);
+        }
+        return ret;
+    }
+
+    public Cell markDeadAt(int x, int y) {
+        return markDead(cells[x][y]);
+    }
+
+    public Cell markDead(Cell cell) {
+        Cell ret = cell.markDead();
+        if (cell.isDirty()) {
+            dirtyCells.add(cell);
+        }
+        return ret;
+    }
+
 
     public List<Cell> getNeighboursOf(final Cell cell) {
         final Position position = cell.getPosition();
@@ -65,43 +100,47 @@ public class World {
         return livingNeighbours;
     }
 
-    public List<Cell> getLivingCells() {
-        List<Cell> livingCells = new ArrayList<Cell>();
-        for (int y = 0; y < getHeight(); y++) {
-            for (int x = 0; x < getWidth(); x++) {
-                Cell cell = cells[x][y];
-                if (cell.isAlive()) {
-                    livingCells.add(cell);
-                }
-            }
-        }
+    public Set<Cell> getLivingCells() {
         return livingCells;
     }
 
     public void tick() {
-        List<Cell> dirtyCells = applyRules();
-        transition(dirtyCells.toArray(new Cell[dirtyCells.size()]));
+        applyRules();
+        transition();
     }
 
-    public List<Cell> applyRules() {
-        List<Cell> dirtyCells = new ArrayList<Cell>();
-        for (int y = 0; y < getHeight(); y++) {
-            for (int x = 0; x < getWidth(); x++) {
-                Cell cell = cells[x][y];
-                ruleSet.apply(this, cell);
-                if (cell.isDirty()) {
-                    dirtyCells.add(cell);
+    public void applyRules() {
+        for (Cell cell : getCellsToApplyRulesTo()) {
+            ruleSet.apply(this, cell);
+        }
+    }
+
+    private Set<Cell> getCellsToApplyRulesTo() {
+        Set<Cell> cells = new HashSet<Cell>();
+        for (Cell cell : livingCells) {
+            cells.add(cell);
+            for (Position.Border border : Position.Border.values()) {
+                if (cell.getPosition().hasNeighbourAt(border, this)) {
+                    final Position position = cell.getPosition().getNeighbourPosition(border);
+                    cells.add(getCellAt(position.getX(), position.getY()));
                 }
             }
         }
-        return dirtyCells;
+        return cells;
     }
 
-    public void transition(Cell... cells) {
-        for (Cell cell : cells) {
+    public void transition() {
+        for (Cell cell : dirtyCells) {
             cell.transition();
+            if (cell.isAlive()) {
+                livingCells.add(cell);
+            } else {
+                livingCells.remove(cell);
+            }
         }
+        dirtyCells = new HashSet<Cell>();
     }
+
 
     public void show() {
         for (int y = 0; y < getHeight(); y++) {

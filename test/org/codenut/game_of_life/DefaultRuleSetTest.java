@@ -12,7 +12,7 @@ public class DefaultRuleSetTest {
         final Cell cell = world.getCellAt(5, 2).revive();
         Assert.assertTrue(cell.isAlive());
         rules.apply(world, cell);
-        world.transition(cell);
+        world.transition();
         Assert.assertTrue(cell.isDead());
     }
 
@@ -27,7 +27,7 @@ public class DefaultRuleSetTest {
         world.getCellAt(6, 1).revive();
         Assert.assertTrue(cell.isAlive());
         rules.apply(world, cell);
-        world.transition(cell);
+        world.transition();
         Assert.assertTrue(cell.isDead());
     }
 
@@ -41,7 +41,7 @@ public class DefaultRuleSetTest {
         world.getCellAt(6, 2).revive();
         Assert.assertTrue(cell.isDead());
         rules.apply(world, cell);
-        world.transition(cell);
+        world.transition();
         Assert.assertTrue(cell.isAlive());
     }
 }

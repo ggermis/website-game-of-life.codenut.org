@@ -8,11 +8,11 @@ public class DefaultRuleSet implements RuleSet {
     public void apply(final World world, Cell cell) {
         final List<Cell> livingNeighbours = world.getLivingNeighboursOf(cell);
         if (cell.isDead() && livingNeighbours.size() == 3) {
-            cell.markAlive();
+            world.markAlive(cell);
         } else if (cell.isAlive() && livingNeighbours.size() < 2 ) {
-            cell.markDead();
+            world.markDead(cell);
         } else if (cell.isAlive() && livingNeighbours.size() > 3) {
-            cell.markDead();
+            world.markDead(cell);
         }
     }
 }

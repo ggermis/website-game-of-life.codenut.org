@@ -24,28 +24,36 @@
     </option>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" name="Default" comment="" />
+    <list default="true" id="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/codenut/game_of_life/DefaultRuleSet.java" afterPath="$PROJECT_DIR$/src/org/codenut/game_of_life/DefaultRuleSet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/org/codenut/game_of_life/DefaultRuleSetTest.java" afterPath="$PROJECT_DIR$/test/org/codenut/game_of_life/DefaultRuleSetTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/codenut/game_of_life/GameOfLife.java" afterPath="$PROJECT_DIR$/src/org/codenut/game_of_life/GameOfLife.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/codenut/game_of_life/GameOfLifeView.java" afterPath="$PROJECT_DIR$/src/org/codenut/game_of_life/GameOfLifeView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/codenut/game_of_life/pattern/Glider.java" afterPath="$PROJECT_DIR$/src/org/codenut/game_of_life/pattern/Glider.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/codenut/game_of_life/World.java" afterPath="$PROJECT_DIR$/src/org/codenut/game_of_life/World.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="GameOfLife.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365190901839" ignored="false" />
     <file path="$PROJECT_DIR$/.idea/compiler.xml" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365172405077" ignored="false" />
     <file path="/MyActivity.java" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365173615804" ignored="false" />
     <file path="/AndroidManifest.xml" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365172704925" ignored="false" />
     <file path="/CellTest.java" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365190539810" ignored="false" />
     <file path="/fragment.java" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365247449943" ignored="false" />
-    <file path="/Dummy.txt" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365175487918" ignored="false" />
+    <file path="/Dummy.txt" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365251734469" ignored="false" />
     <file path="/a.dummy" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365173191919" ignored="false" />
     <file path="/Cell.java" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365237258074" ignored="false" />
     <file path="/CoordinateTest.java" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365181651310" ignored="false" />
     <file path="/Position.java" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365188158707" ignored="false" />
     <file path="/WorldTest.java" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365243604401" ignored="false" />
     <file path="/README" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365176401334" ignored="false" />
-    <file path="/World.java" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365240978521" ignored="false" />
+    <file path="/World.java" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365253735752" ignored="false" />
     <file path="/PositionTest.java" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365188470736" ignored="false" />
     <file path="/PositionException.java" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365188566503" ignored="false" />
     <file path="/GameTest.java" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365234524742" ignored="false" />
     <file path="/RuleSet.java" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365189601201" ignored="false" />
-    <file path="/DefaultRuleSet.java" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365190265564" ignored="false" />
+    <file path="/DefaultRuleSet.java" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365251904736" ignored="false" />
     <file path="$APPLICATION_HOME_DIR$/plugins/JSF/lib/jsf-support.jar!/resources/schemas/composite.taglib.xml" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365233102516" ignored="false" />
     <file path="$APPLICATION_HOME_DIR$/plugins/WebServices/lib/WebServices.jar!/schemas/ws-policy.xsd" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365233102516" ignored="false" />
     <file path="$APPLICATION_HOME_DIR$/plugins/JSF/lib/jsf-support.jar!/resources/schemas/xml.xsd" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365233102516" ignored="false" />
@@ -111,12 +119,12 @@
     <file path="$PROJECT_DIR$/gen/org/codenut/game_of_life/Manifest.java" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365246584484" ignored="false" />
     <file path="$PROJECT_DIR$/gen/org/codenut/game_of_life/R.java" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365246584484" ignored="false" />
     <file path="$PROJECT_DIR$/gen/org/codenut/game_of_life/BuildConfig.java" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365246592644" ignored="false" />
-    <file path="/DefaultRuleSetTest.java" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365236849308" ignored="false" />
-    <file path="/GameOfLifeView.java" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365245447323" ignored="false" />
+    <file path="/DefaultRuleSetTest.java" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365252073482" ignored="false" />
+    <file path="/GameOfLifeView.java" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365250831869" ignored="false" />
     <file path="$APPLICATION_HOME_DIR$/plugins/android/lib/android.jar!/org/jetbrains/android/android.xsd" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365238442551" ignored="false" />
-    <file path="/GameOfLife.java" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365247555357" ignored="false" />
+    <file path="/GameOfLife.java" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365248283181" ignored="false" />
     <file path="/Pattern.java" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365242162888" ignored="false" />
-    <file path="/Glider.java" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365242405989" ignored="false" />
+    <file path="/Glider.java" changelist="d7dcf2e9-b1c4-4159-b42d-7363e809c20b" time="1365253790821" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +188,7 @@
       <file leaf-file-name="GameOfLifeView.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/codenut/game_of_life/GameOfLifeView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="22" selection-start="928" selection-end="928" vertical-scroll-proportion="0.0">
+            <state line="12" column="24" selection-start="342" selection-end="342" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -191,7 +199,7 @@
       <file leaf-file-name="GameOfLife.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/codenut/game_of_life/GameOfLife.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="18" column="23" selection-start="457" selection-end="457" vertical-scroll-proportion="0.39647576">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -199,28 +207,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="project.properties" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/project.properties">
+      <file leaf-file-name="Glider.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/codenut/game_of_life/pattern/Glider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="17" selection-start="562" selection-end="562" vertical-scroll-proportion="0.0">
+            <state line="9" column="54" selection-start="322" selection-end="322" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="proguard-project.txt" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/proguard-project.txt">
+      <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="78" selection-start="704" selection-end="704" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -229,14 +228,51 @@
       <file leaf-file-name="World.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/codenut/game_of_life/World.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="73" column="33" selection-start="1998" selection-end="1998" vertical-scroll-proportion="0.0">
+            <state line="60" column="36" selection-start="1286" selection-end="1286" vertical-scroll-proportion="-9.807693">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#989#995#0" expanded="true" />
-                <element signature="e#1473#1479#0" expanded="true" />
-                <element signature="e#1777#1783#0" expanded="true" />
-                <element signature="e#2314#2320#0" expanded="true" />
+                <element signature="e#1808#1814#0" expanded="true" />
+                <element signature="e#2292#2298#0" expanded="true" />
+                <element signature="e#2886#2892#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Position.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/codenut/game_of_life/Position.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="19" selection-start="538" selection-end="538" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DefaultRuleSetTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/org/codenut/game_of_life/DefaultRuleSetTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="40" selection-start="565" selection-end="565" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RuleSet.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/codenut/game_of_life/RuleSet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="16" selection-start="79" selection-end="79" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DefaultRuleSet.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/codenut/game_of_life/DefaultRuleSet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="53" selection-start="176" selection-end="176" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -244,16 +280,7 @@
       <file leaf-file-name="Cell.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/codenut/game_of_life/Cell.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="45" selection-start="424" selection-end="424" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="View.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Library/AndroidSDK/sdk/sources/android-17/android/view/View.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10332" column="16" selection-start="401033" selection-end="401033" vertical-scroll-proportion="0.0">
+            <state line="63" column="16" selection-start="1064" selection-end="1064" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -266,25 +293,34 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitLogSettings">
+    <option name="myStructureFilterPaths" />
+    <option name="myDateState">
+      <MyDateState />
+    </option>
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/src/org/codenut/game_of_life/PositionException.java" />
         <option value="$PROJECT_DIR$/src/org/codenut/game_of_life/RuleSet.java" />
-        <option value="$PROJECT_DIR$/src/org/codenut/game_of_life/DefaultRuleSet.java" />
         <option value="$PROJECT_DIR$/test/org/codenut/game_of_life/CellTest.java" />
         <option value="$PROJECT_DIR$/test/org/codenut/game_of_life/GameTest.java" />
-        <option value="$PROJECT_DIR$/test/org/codenut/game_of_life/DefaultRuleSetTest.java" />
         <option value="$PROJECT_DIR$/src/org/codenut/game_of_life/Cell.java" />
-        <option value="$PROJECT_DIR$/src/org/codenut/game_of_life/World.java" />
         <option value="$PROJECT_DIR$/res/layout/main.xml" />
         <option value="$PROJECT_DIR$/src/org/codenut/game_of_life/pattern/Pattern.java" />
-        <option value="$PROJECT_DIR$/src/org/codenut/game_of_life/pattern/Glider.java" />
         <option value="$PROJECT_DIR$/test/org/codenut/game_of_life/WorldTest.java" />
-        <option value="$PROJECT_DIR$/src/org/codenut/game_of_life/GameOfLifeView.java" />
         <option value="$PROJECT_DIR$/project.properties" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/org/codenut/game_of_life/GameOfLife.java" />
+        <option value="$PROJECT_DIR$/src/org/codenut/game_of_life/DefaultRuleSet.java" />
+        <option value="$PROJECT_DIR$/test/org/codenut/game_of_life/DefaultRuleSetTest.java" />
+        <option value="$PROJECT_DIR$/src/org/codenut/game_of_life/World.java" />
+        <option value="$PROJECT_DIR$/src/org/codenut/game_of_life/pattern/Glider.java" />
+        <option value="$PROJECT_DIR$/src/org/codenut/game_of_life/GameOfLifeView.java" />
       </list>
     </option>
   </component>
@@ -294,7 +330,7 @@
     <option name="width" value="1879" />
     <option name="height" value="1178" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -503,41 +539,6 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="DefaultRuleSetTest.rules" type="TestNG" factoryName="TestNG" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="org.codenut.game_of_life.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="GameOfLife" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" value="" />
-      <option name="SUITE_NAME" value="" />
-      <option name="PACKAGE_NAME" value="org.codenut.game_of_life" />
-      <option name="MAIN_CLASS_NAME" value="org.codenut.game_of_life.DefaultRuleSetTest" />
-      <option name="METHOD_NAME" value="rules" />
-      <option name="GROUP_NAME" value="" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="OUTPUT_DIRECTORY" value="" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" value="" />
-      <envs />
-      <properties />
-      <listeners />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
     <configuration default="false" name="DefaultRuleSetTest.livingCellWithMoreThanThreeNeighboursDies" type="TestNG" factoryName="TestNG" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -624,6 +625,41 @@
       <option name="METHOD_NAME" value="countLivingCells" />
       <option name="GROUP_NAME" value="" />
       <option name="TEST_OBJECT" value="METHOD" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="OUTPUT_DIRECTORY" value="" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" value="" />
+      <envs />
+      <properties />
+      <listeners />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="DefaultRuleSetTest" type="TestNG" factoryName="TestNG" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="org.codenut.game_of_life.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="GameOfLife" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="SUITE_NAME" value="" />
+      <option name="PACKAGE_NAME" value="org.codenut.game_of_life" />
+      <option name="MAIN_CLASS_NAME" value="org.codenut.game_of_life.DefaultRuleSetTest" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" value="" />
+      <option name="TEST_OBJECT" value="CLASS" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
@@ -789,18 +825,18 @@
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Android Application.GameOfLife" />
       <item index="1" class="java.lang.String" itemvalue="Application.World" />
-      <item index="2" class="java.lang.String" itemvalue="TestNG.DefaultRuleSetTest.rules" />
-      <item index="3" class="java.lang.String" itemvalue="TestNG.DefaultRuleSetTest.livingCellWithMoreThanThreeNeighboursDies" />
-      <item index="4" class="java.lang.String" itemvalue="TestNG.DefaultRuleSetTest.deadCellWithThreeLivingNeighboursRevives" />
-      <item index="5" class="java.lang.String" itemvalue="TestNG.WorldTest.countLivingCells" />
+      <item index="2" class="java.lang.String" itemvalue="TestNG.DefaultRuleSetTest.livingCellWithMoreThanThreeNeighboursDies" />
+      <item index="3" class="java.lang.String" itemvalue="TestNG.DefaultRuleSetTest.deadCellWithThreeLivingNeighboursRevives" />
+      <item index="4" class="java.lang.String" itemvalue="TestNG.WorldTest.countLivingCells" />
+      <item index="5" class="java.lang.String" itemvalue="TestNG.DefaultRuleSetTest" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="TestNG.WorldTest.countLivingCells" />
-        <item index="1" class="java.lang.String" itemvalue="Application.World" />
-        <item index="2" class="java.lang.String" itemvalue="TestNG.DefaultRuleSetTest.deadCellWithThreeLivingNeighboursRevives" />
-        <item index="3" class="java.lang.String" itemvalue="TestNG.DefaultRuleSetTest.livingCellWithMoreThanThreeNeighboursDies" />
-        <item index="4" class="java.lang.String" itemvalue="TestNG.DefaultRuleSetTest.rules" />
+        <item index="0" class="java.lang.String" itemvalue="TestNG.DefaultRuleSetTest" />
+        <item index="1" class="java.lang.String" itemvalue="TestNG.WorldTest.countLivingCells" />
+        <item index="2" class="java.lang.String" itemvalue="Application.World" />
+        <item index="3" class="java.lang.String" itemvalue="TestNG.DefaultRuleSetTest.deadCellWithThreeLivingNeighboursRevives" />
+        <item index="4" class="java.lang.String" itemvalue="TestNG.DefaultRuleSetTest.livingCellWithMoreThanThreeNeighboursDies" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -856,15 +892,16 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="41" y="22" width="1879" height="1178" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32951444" sideWeight="0.6720227" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32951444" sideWeight="0.6720227" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32986766" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32932824" sideWeight="0.6720227" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986766" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986766" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39981097" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -878,12 +915,11 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24986361" sideWeight="0.6720227" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32797733" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24986361" sideWeight="0.67013234" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32797733" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986766" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -952,67 +988,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/org/codenut/game_of_life/DefaultRuleSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="30" selection-start="541" selection-end="541" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Library/AndroidSDK/sdk/sources/android-17/android/graphics/Canvas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1343" column="16" selection-start="53817" selection-end="53817" vertical-scroll-proportion="0.33235726">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="484" selection-end="484" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/codenut/game_of_life/pattern/Pattern.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="14" selection-start="124" selection-end="124" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/codenut/game_of_life/pattern/Glider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="37" selection-start="422" selection-end="422" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/org/codenut/game_of_life/WorldTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="27" selection-start="433" selection-end="433" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Library/AndroidSDK/sdk/sources/android-17/java/lang/Thread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1011" column="23" selection-start="33667" selection-end="33667" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Library/AndroidSDK/sdk/sources/android-17/android/content/Context.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="22" selection-start="2065" selection-end="2065" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Library/AndroidSDK/sdk/sources/android-17/android/view/View.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10332" column="16" selection-start="401033" selection-end="401033" vertical-scroll-proportion="0.0">
@@ -1034,26 +1009,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/codenut/game_of_life/Cell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="45" selection-start="424" selection-end="424" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/codenut/game_of_life/World.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="33" selection-start="1998" selection-end="1998" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#989#995#0" expanded="true" />
-            <element signature="e#1473#1479#0" expanded="true" />
-            <element signature="e#1777#1783#0" expanded="true" />
-            <element signature="e#2314#2320#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="78" selection-start="704" selection-end="704" vertical-scroll-proportion="0.0">
@@ -1061,9 +1016,86 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/AndroidSDK/sdk/sources/android-17/android/view/SurfaceView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="11" selection-start="1327" selection-end="1327" vertical-scroll-proportion="0.33235726">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/AndroidSDK/sdk/sources/android-17/android/graphics/Bitmap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="518" column="45" selection-start="18176" selection-end="18176" vertical-scroll-proportion="-0.21732746">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/codenut/game_of_life/RuleSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="16" selection-start="79" selection-end="79" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/codenut/game_of_life/Cell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="16" selection-start="1064" selection-end="1064" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/codenut/game_of_life/Position.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="19" selection-start="538" selection-end="538" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/org/codenut/game_of_life/DefaultRuleSetTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="40" selection-start="565" selection-end="565" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/codenut/game_of_life/DefaultRuleSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="53" selection-start="176" selection-end="176" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/codenut/game_of_life/World.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="36" selection-start="1286" selection-end="1286" vertical-scroll-proportion="-9.807693">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1808#1814#0" expanded="true" />
+            <element signature="e#2292#2298#0" expanded="true" />
+            <element signature="e#2886#2892#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/codenut/game_of_life/pattern/Glider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="54" selection-start="322" selection-end="322" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/codenut/game_of_life/GameOfLifeView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="22" selection-start="928" selection-end="928" vertical-scroll-proportion="0.0">
+        <state line="12" column="24" selection-start="342" selection-end="342" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1072,7 +1104,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/codenut/game_of_life/GameOfLife.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="18" column="23" selection-start="457" selection-end="457" vertical-scroll-proportion="0.39647576">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
