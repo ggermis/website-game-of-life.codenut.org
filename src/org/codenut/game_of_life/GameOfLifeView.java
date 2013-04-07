@@ -23,6 +23,7 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
 
     private Paint gridPainter;
     private Paint cellPainter;
+    private Paint linePainter;
 
     private World world;
     private GameThread thread;
@@ -51,7 +52,7 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
             while (shouldRun) {
                 try {
                     boolean worldChanged = world.tick();
-                    if (! worldChanged) {
+                    if (!worldChanged) {
                         handler.post(new Runnable() {
                             @Override
                             public void run() {
@@ -76,7 +77,11 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
         gridPainter = new Paint();
         gridPainter.setColor(Color.argb(100, 100, 100, 100));
         cellPainter = new Paint();
+        cellPainter.setAntiAlias(true);
         cellPainter.setColor(Color.argb(150, 100, 200, 200));
+        linePainter = new Paint();
+        linePainter.setAntiAlias(true);
+        linePainter.setColor(Color.BLACK);
     }
 
 
@@ -107,7 +112,9 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
             int top = cell.getPosition().getY() * CELL_SIZE + PADDING;
             int right = left + CELL_SIZE - 2 * PADDING;
             int bottom = top + CELL_SIZE - 2 * PADDING;
-            canvas.drawRect(new Rect(left, top, right, bottom), cellPainter);
+            canvas.drawRect(left, top, right, bottom, cellPainter);
+            canvas.drawLine(left, top, right, bottom, linePainter);
+            canvas.drawLine(right, top, left, bottom, linePainter);
         }
     }
 
