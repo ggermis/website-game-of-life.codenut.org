@@ -84,6 +84,11 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
+        // idea can't render the view otherwise
+        if (world == null) {
+            createAppropriatelySizedWorld(getMeasuredWidth(), getMeasuredHeight());
+        }
+
         int width = world.getWidth() * CELL_SIZE;
         int height = world.getHeight() * CELL_SIZE;
 
