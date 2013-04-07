@@ -28,8 +28,16 @@ public class Cell {
         return state == State.ALIVE;
     }
 
+    public boolean isMarkedAlive() {
+        return mark == State.ALIVE;
+    }
+
     public boolean isDead() {
         return state == State.DEAD;
+    }
+
+    public boolean isMarkedDead() {
+        return mark == State.DEAD;
     }
 
     public boolean isDirty() {

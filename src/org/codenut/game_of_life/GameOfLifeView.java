@@ -18,12 +18,13 @@ import org.codenut.game_of_life.pattern.Glider;
 public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callback, View.OnTouchListener {
 
     private final int PADDING = 1;
-    private final int CELL_SIZE = 15;
+    private final int CELL_SIZE = 10;
     private final long SLEEP = 50;
 
     private Paint gridPainter;
     private Paint cellPainter;
-    private Paint linePainter;
+    private Paint dirtyLiveCellPainter;
+    private Paint dirtyDeadCellPainter;
 
     private World world;
     private GameThread thread;
@@ -51,7 +52,9 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
         public void run() {
             while (shouldRun) {
                 try {
-                    boolean worldChanged = world.tick();
+                    world.applyRules();
+                    drawSurface(getHolder());
+                    boolean worldChanged = world.transition();
                     if (!worldChanged) {
                         handler.post(new Runnable() {
                             @Override
@@ -61,7 +64,6 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
                         });
                         setRunning(false);
                     }
-                    drawSurface(getHolder());
                     sleep(SLEEP);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -75,13 +77,17 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
         setOnTouchListener(this);
         getHolder().addCallback(this);
         gridPainter = new Paint();
-        gridPainter.setColor(Color.argb(100, 100, 100, 100));
+        gridPainter.setColor(Color.argb(150, 100, 100, 100));
         cellPainter = new Paint();
         cellPainter.setAntiAlias(true);
         cellPainter.setColor(Color.argb(150, 100, 200, 200));
-        linePainter = new Paint();
-        linePainter.setAntiAlias(true);
-        linePainter.setColor(Color.BLACK);
+        dirtyLiveCellPainter = new Paint();
+        dirtyLiveCellPainter.setAntiAlias(true);
+        dirtyLiveCellPainter.setColor(Color.BLACK);
+        dirtyDeadCellPainter = new Paint();
+        dirtyDeadCellPainter.setAntiAlias(true);
+        dirtyDeadCellPainter.setColor(Color.GREEN);
+        dirtyDeadCellPainter.setAlpha(70);
     }
 
 
@@ -113,9 +119,23 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
             int right = left + CELL_SIZE - 2 * PADDING;
             int bottom = top + CELL_SIZE - 2 * PADDING;
             canvas.drawRect(left, top, right, bottom, cellPainter);
-            canvas.drawLine(left, top, right, bottom, linePainter);
-            canvas.drawLine(right, top, left, bottom, linePainter);
+
         }
+
+        // draw dirty cells
+        for (Cell cell : world.getDirtyCells()) {
+            int left = cell.getPosition().getX() * CELL_SIZE + PADDING;
+            int top = cell.getPosition().getY() * CELL_SIZE + PADDING;
+            int right = left + CELL_SIZE - 2 * PADDING;
+            int bottom = top + CELL_SIZE - 2 * PADDING;
+            if (cell.isMarkedDead()) {
+                canvas.drawLine(left, top, right, bottom, dirtyLiveCellPainter);
+                canvas.drawLine(right, top, left, bottom, dirtyLiveCellPainter);
+            } else {
+                canvas.drawRect(left, top, right, bottom, dirtyDeadCellPainter);
+            }
+        }
+
     }
 
     private void createAppropriatelySizedWorld(int measuredWidth, int measuredHeight) {
