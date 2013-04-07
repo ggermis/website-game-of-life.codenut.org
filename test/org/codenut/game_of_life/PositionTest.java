@@ -21,20 +21,20 @@ public class PositionTest {
     public Object[][] neighbourPositionDataProvider() {
         final Position position = new Position(5, 3);
         return new Object[][] {
-                { position, Border.NORTH, new Position(position.getX(), position.getY()-1)},
-                { position, Border.NORTH_EAST, new Position(position.getX()+1, position.getY()-1)},
-                { position, Border.EAST, new Position(position.getX()+1, position.getY())},
-                { position, Border.SOUTH_EAST, new Position(position.getX()+1, position.getY()+1)},
-                { position, Border.SOUTH, new Position(position.getX(), position.getY()+1)},
-                { position, Border.SOUTH_WEST, new Position(position.getX()-1, position.getY()+1)},
-                { position, Border.WEST, new Position(position.getX()-1, position.getY())},
-                { position, Border.NORTH_WEST, new Position(position.getX()-1, position.getY()-1)},
+                { position, Direction.NORTH, new Position(position.getX(), position.getY()-1)},
+                { position, Direction.NORTH_EAST, new Position(position.getX()+1, position.getY()-1)},
+                { position, Direction.EAST, new Position(position.getX()+1, position.getY())},
+                { position, Direction.SOUTH_EAST, new Position(position.getX()+1, position.getY()+1)},
+                { position, Direction.SOUTH, new Position(position.getX(), position.getY()+1)},
+                { position, Direction.SOUTH_WEST, new Position(position.getX()-1, position.getY()+1)},
+                { position, Direction.WEST, new Position(position.getX()-1, position.getY())},
+                { position, Direction.NORTH_WEST, new Position(position.getX()-1, position.getY()-1)},
         };
     }
 
     @Test(dataProvider = "neighbourPositionDataProvider")
-    public void neighbourPosition(final Position position, final Border border, final Position expectedPosition) {
-        Assert.assertEquals(expectedPosition, position.getNeighbourPosition(border));
+    public void neighbourPosition(final Position position, final Direction direction, final Position expectedPosition) {
+        Assert.assertEquals(expectedPosition, position.getNeighbourPosition(direction));
     }
 
     @Test

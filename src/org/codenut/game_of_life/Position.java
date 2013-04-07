@@ -24,9 +24,9 @@ public class Position {
     }
 
 
-    public Position getNeighbourPosition(final Border border) {
+    public Position getNeighbourPosition(final Direction direction) {
         Position position = null;
-        switch (border) {
+        switch (direction) {
             case NORTH:
                 position = new Position(getX(), getY()-1);
                 break;
@@ -57,8 +57,8 @@ public class Position {
 
     public List<Position> getAllNeighbourPositions() {
         List<Position> neighbours = new ArrayList<Position>();
-        for (Border border : Border.values()) {
-            neighbours.add(getNeighbourPosition(border));
+        for (Direction direction : Direction.values()) {
+            neighbours.add(getNeighbourPosition(direction));
         }
         return neighbours;
     }
