@@ -70,11 +70,7 @@ public class World {
     }
 
     public Cell markAlive(Cell cell) {
-        Cell ret = cell.markAlive();
-        if (cell.isDirty()) {
-            dirtyCells.put(cell.getPosition(), cell);
-        }
-        return ret;
+        return trackDirtyCell(cell.markAlive());
     }
 
     public Cell markDead(int x, int y) {
@@ -82,11 +78,7 @@ public class World {
     }
 
     public Cell markDead(Cell cell) {
-        Cell ret = cell.markDead();
-        if (cell.isDirty()) {
-            dirtyCells.put(cell.getPosition(), cell);
-        }
-        return ret;
+        return trackDirtyCell(cell.markDead());
     }
 
 
@@ -118,8 +110,7 @@ public class World {
     public boolean transition() {
         boolean wasDirty = isDirty();
         for (Cell cell : getDirtyCells()) {
-            cell.transition();
-            trackLivingCell(cell);
+            trackLivingCell(cell.transition());
         }
         dirtyCells = new HashMap<Position, Cell>();
         return wasDirty;
@@ -144,6 +135,13 @@ public class World {
         } else {
             livingCells.remove(cell.getPosition());
         }
+    }
+
+    private Cell trackDirtyCell(final Cell cell) {
+        if (cell.isDirty()) {
+            dirtyCells.put(cell.getPosition(), cell);
+        }
+        return cell;
     }
 
     private Position normalizePosition(Position position) {
