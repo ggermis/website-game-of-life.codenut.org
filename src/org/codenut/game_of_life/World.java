@@ -109,9 +109,9 @@ public class World {
     }
 
 
-    public void tick() {
+    public boolean tick() {
         applyRules();
-        transition();
+        return transition();
     }
 
     public void applyRules() {
@@ -131,12 +131,14 @@ public class World {
         return cells;
     }
 
-    public void transition() {
+    public boolean transition() {
+        boolean wasDirty = isDirty();
         for (Cell cell : getDirtyCells()) {
             cell.transition();
             trackLivingCell(cell);
         }
         dirtyCells = new HashMap<Position, Cell>();
+        return wasDirty;
     }
 
     private void trackLivingCell(final Cell cell) {

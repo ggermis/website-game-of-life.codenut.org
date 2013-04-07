@@ -2,6 +2,7 @@ package org.codenut.game_of_life;
 
 import android.content.Context;
 import android.graphics.*;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -30,13 +31,19 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
     private class GameThread extends Thread {
         private GameOfLifeView view;
         private boolean shouldRun = true;
+        private Handler handler;
 
         public GameThread(GameOfLifeView view) {
             this.view = view;
+            this.handler = new Handler();
         }
 
         public void setRunning(final boolean shouldRun) {
             this.shouldRun = shouldRun;
+        }
+
+        public boolean isRunning() {
+            return shouldRun;
         }
 
         @Override
@@ -48,7 +55,15 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
                     synchronized (getHolder()) {
                         view.onDraw(canvas);
                     }
-                    world.tick();
+                    if (!world.tick()) {
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getContext(), "Done", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        setRunning(false);
+                    }
                     sleep(SLEEP);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -79,7 +94,6 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
 
         if (world == null) {
             createAppropriatelySizedWorld(getMeasuredWidth(), getMeasuredHeight());
-            thread = new GameThread(this);
         }
 
         int width = world.getWidth() * CELL_SIZE;
@@ -124,14 +138,16 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
         boolean retry = true;
-        thread.setRunning(false);
-        while (retry) {
-            try {
-                thread.interrupt();
-                thread.join();
-                retry = false;
-            } catch (InterruptedException e) {
-                // retry
+        if (thread.isRunning()) {
+            thread.setRunning(false);
+            while (retry) {
+                try {
+                    thread.interrupt();
+                    thread.join();
+                    retry = false;
+                } catch (InterruptedException e) {
+                    // retry
+                }
             }
         }
     }
