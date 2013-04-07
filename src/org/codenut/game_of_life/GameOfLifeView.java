@@ -177,12 +177,7 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
     public boolean onTouch(View v, MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             Cell cell = world.getCellAt((int)(event.getX() / CELL_SIZE), (int)(event.getY() / CELL_SIZE));
-            if (cell.isMarkedAlive()) {
-                world.markDead(cell);
-            } else {
-                world.markAlive(cell);
-            }
-            world.transition();
+            world.toggle(cell);
             drawSurface(getHolder());
         }
         return true;

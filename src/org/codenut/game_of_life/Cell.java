@@ -45,6 +45,14 @@ public class Cell {
     }
 
 
+    public Cell setAlive() {
+        return markAlive().transition();
+    }
+
+    public Cell setDead() {
+        return markDead().transition();
+    }
+
     public Cell markAlive() {
         markAs(State.ALIVE);
         return this;

@@ -65,12 +65,28 @@ public class World {
     }
 
 
+    public void toggle(Cell cell) {
+        if (cell.isAlive()) {
+            setDead(cell);
+        } else {
+            setAlive(cell);
+        }
+    }
+
+    public Cell setAlive(Cell cell) {
+        return trackLivingCell(cell.setAlive());
+    }
+
     public Cell markAlive(int x, int y) {
         return markAlive(getCellAt(x, y));
     }
 
     public Cell markAlive(Cell cell) {
         return trackDirtyCell(cell.markAlive());
+    }
+
+    public Cell setDead(Cell cell) {
+        return trackLivingCell(cell.setDead());
     }
 
     public Cell markDead(int x, int y) {
@@ -129,12 +145,13 @@ public class World {
     }
 
 
-    private void trackLivingCell(final Cell cell) {
+    private Cell trackLivingCell(final Cell cell) {
         if (cell.isAlive()) {
             livingCells.put(cell.getPosition(), cell);
         } else {
             livingCells.remove(cell.getPosition());
         }
+        return cell;
     }
 
     private Cell trackDirtyCell(final Cell cell) {
