@@ -73,7 +73,7 @@ public class World {
         }
     }
 
-    public Cell setAlive(Cell cell) {
+    private Cell setAlive(Cell cell) {
         return trackLivingCell(cell.setAlive());
     }
 
@@ -85,7 +85,7 @@ public class World {
         return trackDirtyCell(cell.markAlive());
     }
 
-    public Cell setDead(Cell cell) {
+    private Cell setDead(Cell cell) {
         return trackLivingCell(cell.setDead());
     }
 
