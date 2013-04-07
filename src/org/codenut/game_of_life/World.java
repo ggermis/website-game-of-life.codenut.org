@@ -1,6 +1,9 @@
 package org.codenut.game_of_life;
 
 
+import org.codenut.game_of_life.ruleset.DefaultRuleSet;
+import org.codenut.game_of_life.ruleset.RuleSet;
+
 import java.util.*;
 
 public class World {

@@ -1,8 +1,11 @@
-package org.codenut.game_of_life;
+package org.codenut.game_of_life.ruleset;
 
 
+import org.codenut.game_of_life.Cell;
+import org.codenut.game_of_life.World;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 
 public class DefaultRuleSetTest {
 

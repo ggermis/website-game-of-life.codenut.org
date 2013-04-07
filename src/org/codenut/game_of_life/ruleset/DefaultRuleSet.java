@@ -1,6 +1,9 @@
-package org.codenut.game_of_life;
+package org.codenut.game_of_life.ruleset;
 
+import org.codenut.game_of_life.Cell;
+import org.codenut.game_of_life.World;
 import java.util.List;
+
 
 public class DefaultRuleSet implements RuleSet {
 
