@@ -8,6 +8,10 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Toast;
+import org.codenut.game_of_life.pattern.BeeHive;
+import org.codenut.game_of_life.pattern.Blinker;
+import org.codenut.game_of_life.pattern.Block;
+import org.codenut.game_of_life.pattern.Glider;
 
 
 public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callback, View.OnTouchListener {
@@ -67,12 +71,13 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
         cellPainter = new Paint();
         cellPainter.setColor(Color.CYAN);
         thread = new GameThread(this);
+        world = new World();
+        new Glider().draw(world, 5, 3);
+        new Blinker().draw(world, 23, 12);
+        new Block().draw(world, 27, 29);
+        new BeeHive().draw(world, 13, 25);
     }
 
-
-    public void setWorld(final World world) {
-        this.world = world;
-    }
 
     @Override
     protected void onDraw(Canvas canvas) {
