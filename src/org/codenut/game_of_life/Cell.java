@@ -14,7 +14,8 @@ public class Cell {
 
     public Cell(final Position position, final State state) {
         this.position = position;
-        setDead();
+        markAs(state);
+        transition();
     }
 
 
