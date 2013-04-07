@@ -18,7 +18,7 @@ import org.codenut.game_of_life.pattern.Glider;
 public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callback, View.OnTouchListener {
 
     private final int PADDING = 1;
-    private final int CELL_SIZE = 10;
+    private final int CELL_SIZE = 15;
     private final long SLEEP = 50;
 
     private Paint gridPainter;
@@ -80,14 +80,14 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
         gridPainter.setColor(Color.argb(150, 100, 100, 100));
         cellPainter = new Paint();
         cellPainter.setAntiAlias(true);
-        cellPainter.setColor(Color.argb(150, 100, 200, 200));
+        cellPainter.setColor(Color.argb(255, 100, 200, 200));
         dirtyLiveCellPainter = new Paint();
         dirtyLiveCellPainter.setAntiAlias(true);
         dirtyLiveCellPainter.setColor(Color.BLACK);
         dirtyDeadCellPainter = new Paint();
         dirtyDeadCellPainter.setAntiAlias(true);
         dirtyDeadCellPainter.setColor(Color.GREEN);
-        dirtyDeadCellPainter.setAlpha(70);
+        dirtyDeadCellPainter.setAlpha(120);
     }
 
 
