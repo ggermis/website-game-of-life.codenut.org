@@ -31,12 +31,10 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
 
 
     private class GameThread extends Thread {
-        private GameOfLifeView view;
         private boolean shouldRun = true;
         private Handler handler;
 
-        public GameThread(GameOfLifeView view) {
-            this.view = view;
+        public GameThread() {
             this.handler = new Handler();
         }
 
@@ -86,8 +84,7 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
         dirtyLiveCellPainter.setColor(Color.BLACK);
         dirtyDeadCellPainter = new Paint();
         dirtyDeadCellPainter.setAntiAlias(true);
-        dirtyDeadCellPainter.setColor(Color.GREEN);
-        dirtyDeadCellPainter.setAlpha(120);
+        dirtyDeadCellPainter.setColor(Color.argb(120, 100, 200, 200));
     }
 
 
@@ -148,7 +145,7 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
     }
 
 
-    protected void drawSurface(SurfaceHolder holder) {
+    private void drawSurface(SurfaceHolder holder) {
         Canvas canvas = null;
         try {
             canvas = holder.lockCanvas();
@@ -202,7 +199,7 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
     }
 
     public void start() {
-        thread = new GameThread(this);
+        thread = new GameThread();
         thread.start();
     }
 }
