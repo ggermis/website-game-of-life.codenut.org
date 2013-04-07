@@ -41,7 +41,7 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
 
         @Override
         public void run() {
-            while (shouldRun) {
+            while (shouldRun && world.isDirty()) {
                 Canvas canvas = null;
                 try {
                     canvas = getHolder().lockCanvas();
