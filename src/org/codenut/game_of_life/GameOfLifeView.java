@@ -100,7 +100,7 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
         int width = world.getWidth() * CELL_SIZE;
         int height = world.getHeight() * CELL_SIZE;
 
-        // draw canvas
+        // draw grid
         canvas.drawColor(Color.BLACK);
         for (int y = 0; y <= height; y += CELL_SIZE) {
             canvas.drawLine(0, y, width, y, gridPainter);
