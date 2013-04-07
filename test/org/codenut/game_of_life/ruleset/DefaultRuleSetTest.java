@@ -13,7 +13,7 @@ public class DefaultRuleSetTest {
     public void livingCellWithFewerThanTwoNeighboursDies() {
         final RuleSet rules = new DefaultRuleSet();
         final World world = new World(10, 10);
-        final Cell cell = world.markAliveAt(5, 2);
+        final Cell cell = world.markAlive(5, 2);
         world.transition();
         Assert.assertTrue(cell.isAlive());
         rules.apply(world, cell);
@@ -25,11 +25,11 @@ public class DefaultRuleSetTest {
     public void livingCellWithMoreThanThreeNeighboursDies() {
         final RuleSet rules = new DefaultRuleSet();
         final World world = new World(10, 10);
-        final Cell cell = world.markAliveAt(5, 2);
-        world.markAliveAt(5, 3);
-        world.markAliveAt(6, 3);
-        world.markAliveAt(6, 2);
-        world.markAliveAt(6, 1);
+        final Cell cell = world.markAlive(5, 2);
+        world.markAlive(5, 3);
+        world.markAlive(6, 3);
+        world.markAlive(6, 2);
+        world.markAlive(6, 1);
         world.transition();
         Assert.assertTrue(cell.isAlive());
         rules.apply(world, cell);
@@ -42,9 +42,9 @@ public class DefaultRuleSetTest {
         final RuleSet rules = new DefaultRuleSet();
         final World world = new World(10, 10);
         final Cell cell = world.getCellAt(5, 2);
-        world.markAliveAt(5, 3);
-        world.markAliveAt(6, 3);
-        world.markAliveAt(6, 2);
+        world.markAlive(5, 3);
+        world.markAlive(6, 3);
+        world.markAlive(6, 2);
         world.transition();
         Assert.assertTrue(cell.isDead());
         rules.apply(world, cell);

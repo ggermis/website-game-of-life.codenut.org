@@ -65,7 +65,7 @@ public class World {
     }
 
 
-    public Cell markAliveAt(int x, int y) {
+    public Cell markAlive(int x, int y) {
         return markAlive(getCellAt(x, y));
     }
 
@@ -77,7 +77,7 @@ public class World {
         return ret;
     }
 
-    public Cell markDeadAt(int x, int y) {
+    public Cell markDead(int x, int y) {
         return markDead(getCellAt(x, y));
     }
 
