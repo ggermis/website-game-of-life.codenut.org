@@ -5,8 +5,13 @@
               android:layout_height="fill_parent"
         >
     <view android:layout_width="fill_parent"
-          android:layout_height="fill_parent"
+          android:layout_height="match_parent"
           class="org.codenut.game_of_life.GameOfLifeView" android:id="@+id/game_of_life_view"
-            />
+          android:layout_gravity="bottom" android:layout_weight="1"/>
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Start"
+            android:id="@+id/button" android:layout_gravity="left|center_vertical"/>
 </LinearLayout>
 

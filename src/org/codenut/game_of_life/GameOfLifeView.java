@@ -49,13 +49,9 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
         @Override
         public void run() {
             while (shouldRun) {
-                Canvas canvas = null;
                 try {
-                    canvas = getHolder().lockCanvas();
-                    synchronized (getHolder()) {
-                        view.onDraw(canvas);
-                    }
-                    if (!world.tick()) {
+                    boolean worldChanged = world.tick();
+                    if (! worldChanged) {
                         handler.post(new Runnable() {
                             @Override
                             public void run() {
@@ -64,13 +60,10 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
                         });
                         setRunning(false);
                     }
+                    drawSurface(getHolder());
                     sleep(SLEEP);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                } finally {
-                    if (canvas != null) {
-                        getHolder().unlockCanvasAndPost(canvas);
-                    }
                 }
             }
         }
@@ -84,17 +77,12 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
         gridPainter.setColor(Color.argb(100, 100, 100, 100));
         cellPainter = new Paint();
         cellPainter.setColor(Color.argb(150, 100, 200, 200));
-        thread = new GameThread(this);
     }
 
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
-        if (world == null) {
-            createAppropriatelySizedWorld(getMeasuredWidth(), getMeasuredHeight());
-        }
 
         int width = world.getWidth() * CELL_SIZE;
         int height = world.getHeight() * CELL_SIZE;
@@ -124,11 +112,28 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
         new Blinker().draw(world, 13, 12);
         new Block().draw(world, 14, 10);
         new BeeHive().draw(world, 17, 15);
+        world.tick();
+    }
+
+
+    protected void drawSurface(SurfaceHolder holder) {
+        Canvas canvas = null;
+        try {
+            canvas = holder.lockCanvas();
+            synchronized (holder) {
+                onDraw(canvas);
+            }
+        } finally {
+            if (canvas != null) {
+                holder.unlockCanvasAndPost(canvas);
+            }
+        }
     }
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        thread.start();
+        createAppropriatelySizedWorld(getMeasuredWidth(), getMeasuredHeight());
+        drawSurface(holder);
     }
 
     @Override
@@ -137,6 +142,18 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
+        stop();
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_UP) {
+            Toast.makeText(getContext(), "Stop touching me! " + event.getX() + ":" + event.getY(), Toast.LENGTH_SHORT).show();
+        }
+        return true;
+    }
+
+    public void stop() {
         boolean retry = true;
         if (thread.isRunning()) {
             thread.setRunning(false);
@@ -152,12 +169,9 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
         }
     }
 
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_UP) {
-            Toast.makeText(getContext(), "Stop touching me!", Toast.LENGTH_LONG).show();
-        }
-        return true;
+    public void start() {
+        thread = new GameThread(this);
+        thread.start();
     }
 }
 
