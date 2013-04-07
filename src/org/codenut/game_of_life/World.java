@@ -72,7 +72,7 @@ public class World {
     public Cell markAlive(Cell cell) {
         Cell ret = cell.markAlive();
         if (cell.isDirty()) {
-            dirtyCells.put(normalizePosition(cell.getPosition()), cell);
+            dirtyCells.put(cell.getPosition(), cell);
         }
         return ret;
     }
@@ -84,7 +84,7 @@ public class World {
     public Cell markDead(Cell cell) {
         Cell ret = cell.markDead();
         if (cell.isDirty()) {
-            dirtyCells.put(normalizePosition(cell.getPosition()), cell);
+            dirtyCells.put(cell.getPosition(), cell);
         }
         return ret;
     }
