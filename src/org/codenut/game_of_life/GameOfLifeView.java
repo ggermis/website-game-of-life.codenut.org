@@ -104,11 +104,11 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
     }
 
     private void createAppropriatelySizedWorld(int measuredWidth, int measuredHeight) {
-        world = new World(measuredWidth / CELL_SIZE + 10, measuredHeight / CELL_SIZE + 10);
-        new Glider().draw(world, 5, 3);
-        new Blinker().draw(world, 23, 12);
-        new Block().draw(world, 27, 29);
-        new BeeHive().draw(world, 13, 25);
+        world = new World(measuredWidth / CELL_SIZE, measuredHeight / CELL_SIZE);
+        new Glider().draw(world, 13, 16);
+        new Blinker().draw(world, 13, 12);
+        new Block().draw(world, 14, 10);
+        new BeeHive().draw(world, 17, 15);
     }
 
     @Override

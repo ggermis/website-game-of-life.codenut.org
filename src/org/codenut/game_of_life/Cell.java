@@ -61,6 +61,6 @@ public class Cell {
 
     @Override
     public String toString() {
-        return String.format(isAlive() ? " X " : " - ");
+        return String.format(isAlive() ? "+ (%d:%d)" : "- (%d:%d)", getPosition().getX(), getPosition().getY());
     }
 }

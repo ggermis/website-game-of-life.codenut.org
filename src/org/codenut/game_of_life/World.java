@@ -52,8 +52,9 @@ public class World {
 
 
     public Cell getCellAt(final Position position) {
-        Cell cell = livingCells.get(position);
-        return cell == null ? new Cell(position) : cell;
+        final Position normalizedPosition = normalizePosition(position);
+        Cell cell = livingCells.get(normalizedPosition);
+        return cell == null ? new Cell(normalizedPosition) : cell;
     }
 
     public Cell getCellAt(int x, int y) {
@@ -68,7 +69,7 @@ public class World {
     public Cell markAlive(Cell cell) {
         Cell ret = cell.markAlive();
         if (cell.isDirty()) {
-            dirtyCells.put(cell.getPosition(), cell);
+            dirtyCells.put(normalizePosition(cell.getPosition()), cell);
         }
         return ret;
     }
@@ -80,7 +81,7 @@ public class World {
     public Cell markDead(Cell cell) {
         Cell ret = cell.markDead();
         if (cell.isDirty()) {
-            dirtyCells.put(cell.getPosition(), cell);
+            dirtyCells.put(normalizePosition(cell.getPosition()), cell);
         }
         return ret;
     }
@@ -137,16 +138,20 @@ public class World {
 
     private void trackLivingCell(final Cell cell) {
         if (cell.isAlive()) {
-            if (isWithinBounds(cell.getPosition())) {
-                livingCells.put(cell.getPosition(), cell);
-            }
+            livingCells.put(cell.getPosition(), cell);
         } else {
             livingCells.remove(cell.getPosition());
         }
     }
 
-    private boolean isWithinBounds(final Position position) {
-        return position.getX() <= width && position.getY() <= height;
+    private Position normalizePosition(Position position) {
+        int x = position.getX();
+        int y = position.getY();
+
+        int widthDivider = x / width;
+        int heightDivider = y / height;
+
+        return new Position(x < 0 ? width + x + (width * widthDivider) : x - widthDivider * width, y < 0 ? height + y + (height * heightDivider) : y - heightDivider * height);
     }
 
     @Override

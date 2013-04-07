@@ -80,4 +80,17 @@ public class WorldTest {
         Assert.assertEquals(1, world.getDirtyCells().size());
     }
 
+    @Test
+    public void positionsWrapWidth() {
+        World world = new World(5, 5);
+        Assert.assertEquals(world.getCellAt(6, 3).getPosition(), world.getCellAt(1, 3).getPosition());
+        Assert.assertEquals(world.getCellAt(-2, 3).getPosition(), world.getCellAt(3, 3).getPosition());
+    }
+
+    @Test void positionsWrapHeight() {
+        World world = new World(5, 5);
+        Assert.assertEquals(world.getCellAt(3, 6).getPosition(), world.getCellAt(3, 1).getPosition());
+        Assert.assertEquals(world.getCellAt(3, -2).getPosition(), world.getCellAt(3, 3).getPosition());
+    }
+
 }
