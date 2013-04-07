@@ -5,9 +5,8 @@ import java.util.*;
 
 public class World {
 
-
     private Map<Position, Cell> livingCells;
-    private Set<Cell> dirtyCells;
+    private Map<Position, Cell> dirtyCells;
 
     private RuleSet ruleSet;
     private int width;
@@ -26,7 +25,7 @@ public class World {
         this.width = width;
         this.height = height;
         this.ruleSet = ruleSet;
-        this.dirtyCells = new HashSet<Cell>();
+        this.dirtyCells = new HashMap<Position, Cell>();
         this.livingCells = new HashMap<Position, Cell>();
     }
 
@@ -39,13 +38,29 @@ public class World {
         return height;
     }
 
+    public Collection<Cell> getLivingCells() {
+        return livingCells.values();
+    }
+
+    public Collection<Cell> getDirtyCells() {
+        return dirtyCells.values();
+    }
+
+
     public boolean isDirty() {
         return getDirtyCells().size() > 0;
     }
 
-    public Cell getCellAt(int x, int y) {
-        return new Cell(new Position(x, y));
+
+    public Cell getCellAt(final Position position) {
+        Cell cell = livingCells.get(position);
+        return cell == null ? new Cell(position) : cell;
     }
+
+    public Cell getCellAt(int x, int y) {
+        return getCellAt(new Position(x, y));
+    }
+
 
     public Cell markAliveAt(int x, int y) {
         return markAlive(getCellAt(x, y));
@@ -54,7 +69,7 @@ public class World {
     public Cell markAlive(Cell cell) {
         Cell ret = cell.markAlive();
         if (cell.isDirty()) {
-            getDirtyCells().add(cell);
+            dirtyCells.put(cell.getPosition(), cell);
         }
         return ret;
     }
@@ -66,7 +81,7 @@ public class World {
     public Cell markDead(Cell cell) {
         Cell ret = cell.markDead();
         if (cell.isDirty()) {
-            getDirtyCells().add(cell);
+            dirtyCells.put(cell.getPosition(), cell);
         }
         return ret;
     }
@@ -75,11 +90,7 @@ public class World {
     public List<Cell> getNeighboursOf(final Cell cell) {
         List<Cell> neighbours = new ArrayList<Cell>();
         for (Position neighbourPosition : cell.getPosition().getAllNeighbourPositions()) {
-            Cell neighbour = livingCells.get(neighbourPosition);
-            if (neighbour == null) {
-                neighbour = getCellAt(neighbourPosition.getX(), neighbourPosition.getY());
-            }
-            neighbours.add(neighbour);
+            neighbours.add(getCellAt(neighbourPosition));
         }
         return neighbours;
     }
@@ -92,22 +103,6 @@ public class World {
             }
         }
         return livingNeighbours;
-    }
-
-
-    public Collection<Cell> getLivingCells() {
-        return livingCells.values();
-    }
-
-    public Collection<Cell> getDirtyCells() {
-        return dirtyCells;
-    }
-
-    public Collection<Cell> getTrackedCells() {
-        Collection<Cell> trackedCells = new HashSet<Cell>();
-        trackedCells.addAll(getLivingCells());
-        trackedCells.addAll(getDirtyCells());
-        return trackedCells;
     }
 
 
@@ -124,10 +119,10 @@ public class World {
 
     private Set<Cell> getCellsToApplyRulesTo() {
         Set<Cell> cells = new HashSet<Cell>();
-        for (Cell cell : getTrackedCells()) {
+        for (Cell cell : getLivingCells()) {
             cells.add(cell);
             for (Position neighbourPosition : cell.getPosition().getAllNeighbourPositions()) {
-                cells.add(getCellAt(neighbourPosition.getX(), neighbourPosition.getY()));
+                cells.add(getCellAt(neighbourPosition));
             }
         }
         return cells;
@@ -142,7 +137,7 @@ public class World {
                 livingCells.remove(cell.getPosition());
             }
         }
-        dirtyCells = new HashSet<Cell>();
+        dirtyCells = new HashMap<Position, Cell>();
     }
 
 

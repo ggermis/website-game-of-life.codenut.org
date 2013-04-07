@@ -61,4 +61,23 @@ public class WorldTest {
         Assert.assertEquals(3, world.getLivingCells().size());
     }
 
+    @Test
+    public void dirtyCellsAreResetWhenWorldIsTransitioned() {
+        final World world = new World();
+        Assert.assertFalse(world.isDirty());
+        world.markAliveAt(5, 2);
+        world.markAliveAt(2, 1);
+        Assert.assertTrue(world.isDirty());
+        world.transition();
+        Assert.assertFalse(world.isDirty());
+    }
+
+    @Test
+    public void markingTheSameCellTwiceOnlyAddsItToDirtyCellsListOnce() {
+        final World world = new World();
+        world.markAliveAt(5, 2);
+        world.markAliveAt(5, 2);
+        Assert.assertEquals(1, world.getDirtyCells().size());
+    }
+
 }

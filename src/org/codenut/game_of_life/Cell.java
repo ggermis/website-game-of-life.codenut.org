@@ -3,10 +3,6 @@ package org.codenut.game_of_life;
 
 public class Cell {
 
-    public enum State {
-        DEAD, ALIVE
-    }
-
     private State state;
     private State mark;
     private Position position;

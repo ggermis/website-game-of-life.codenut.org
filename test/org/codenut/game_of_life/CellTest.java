@@ -70,10 +70,10 @@ public class CellTest {
 
 
     private Cell createDeadCell() {
-        return new Cell(new Position(0,0), Cell.State.DEAD);
+        return new Cell(new Position(0,0), State.DEAD);
     }
 
     private Cell createLivingCell() {
-        return new Cell(new Position(0,0), Cell.State.ALIVE);
+        return new Cell(new Position(0,0), State.ALIVE);
     }
 }
