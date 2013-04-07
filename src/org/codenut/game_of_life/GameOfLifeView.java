@@ -176,9 +176,7 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            int x = (int)(event.getX() / CELL_SIZE);
-            int y = (int)(event.getY() / CELL_SIZE);
-            Cell cell = world.getCellAt(x, y);
+            Cell cell = world.getCellAt((int)(event.getX() / CELL_SIZE), (int)(event.getY() / CELL_SIZE));
             if (cell.isMarkedAlive()) {
                 world.markDead(cell);
             } else {
