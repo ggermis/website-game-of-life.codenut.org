@@ -41,7 +41,7 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
 
         @Override
         public void run() {
-            while (shouldRun && world.isDirty()) {
+            while (shouldRun) {
                 Canvas canvas = null;
                 try {
                     canvas = getHolder().lockCanvas();
@@ -79,6 +79,7 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
 
         if (world == null) {
             createAppropriatelySizedWorld(getMeasuredWidth(), getMeasuredHeight());
+            thread = new GameThread(this);
         }
 
         int width = world.getWidth() * CELL_SIZE;
