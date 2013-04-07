@@ -1,6 +1,9 @@
 package org.codenut.game_of_life;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Position {
 
@@ -12,9 +15,6 @@ public class Position {
     private int y;
 
     public Position(int x, int y) {
-//        if (x < 0 || y < 0) {
-//            throw new PositionException("Invalid position [" + x + ", " + y + "]");
-//        }
         this.x = x;
         this.y = y;
     }
@@ -27,10 +27,6 @@ public class Position {
         return y;
     }
 
-
-    public boolean hasNeighbourAt(final Border border, final World world) {
-        return true;
-    }
 
     public Position getNeighbourPosition(final Border border) {
         Position position = null;
@@ -63,6 +59,14 @@ public class Position {
         return position;
     }
 
+    public List<Position> getAllNeighbourPositions() {
+        List<Position> neighbours = new ArrayList<Position>();
+        for (Border border : Border.values()) {
+            neighbours.add(getNeighbourPosition(border));
+        }
+        return neighbours;
+    }
+
 
     @Override
     public int hashCode() {
@@ -74,7 +78,6 @@ public class Position {
         if (other instanceof Position) {
             Position otherPosition = (Position)other;
             return x == otherPosition.x && y == otherPosition.y;
-
         }
         return false;
     }

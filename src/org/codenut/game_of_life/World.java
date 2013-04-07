@@ -18,8 +18,8 @@ public class World {
         this(100, 100);
     }
 
-    public World(int x, int y) {
-        this(x, y, new DefaultRuleSet());
+    public World(int width, int height) {
+        this(width, height, new DefaultRuleSet());
     }
 
     public World(int width, int height, final RuleSet ruleSet) {
@@ -73,10 +73,8 @@ public class World {
 
 
     public List<Cell> getNeighboursOf(final Cell cell) {
-        final Position position = cell.getPosition();
         List<Cell> neighbours = new ArrayList<Cell>();
-        for (Position.Border border : Position.Border.values()) {
-            Position neighbourPosition = position.getNeighbourPosition(border);
+        for (Position neighbourPosition : cell.getPosition().getAllNeighbourPositions()) {
             Cell neighbour = livingCells.get(neighbourPosition);
             if (neighbour == null) {
                 neighbour = getCellAt(neighbourPosition.getX(), neighbourPosition.getY());
@@ -128,9 +126,8 @@ public class World {
         Set<Cell> cells = new HashSet<Cell>();
         for (Cell cell : getTrackedCells()) {
             cells.add(cell);
-            for (Position.Border border : Position.Border.values()) {
-                final Position position = cell.getPosition().getNeighbourPosition(border);
-                cells.add(getCellAt(position.getX(), position.getY()));
+            for (Position neighbourPosition : cell.getPosition().getAllNeighbourPositions()) {
+                cells.add(getCellAt(neighbourPosition.getX(), neighbourPosition.getY()));
             }
         }
         return cells;

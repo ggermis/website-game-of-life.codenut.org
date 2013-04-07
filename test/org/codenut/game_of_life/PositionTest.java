@@ -4,6 +4,8 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 
 public class PositionTest {
 
@@ -33,6 +35,23 @@ public class PositionTest {
     @Test(dataProvider = "neighbourPositionDataProvider")
     public void neighbourPosition(final Position position, final Position.Border border, final Position expectedPosition) {
         Assert.assertEquals(expectedPosition, position.getNeighbourPosition(border));
+    }
+
+    @Test
+    public void positionsAreEqual() {
+        Assert.assertEquals(new Position(0,0), new Position(0,0));
+        Assert.assertEquals(new Position(5,0), new Position(5,0));
+        Assert.assertEquals(new Position(0,3), new Position(0,3));
+        Assert.assertEquals(new Position(-2,0), new Position(-2,0));
+        Assert.assertEquals(new Position(0,-4), new Position(0,-4));
+        Assert.assertEquals(new Position(-29,-13), new Position(-29,-13));
+        Assert.assertNotEquals(new Position(-5, 4), new Position(20, 0));
+    }
+
+    @Test
+    public void allNeighbourPositions() {
+        List<Position> neighbours = new Position(5, 3).getAllNeighbourPositions();
+        Assert.assertEquals(8, neighbours.size());
     }
 
 }

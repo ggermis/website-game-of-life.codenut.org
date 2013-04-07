@@ -13,7 +13,7 @@ import android.widget.Toast;
 public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callback, View.OnTouchListener {
 
     private final int PADDING = 1;
-    private final int CELL_SIZE = 10;
+    private final int CELL_SIZE = 15;
     private final long SLEEP = 50;
 
     private Paint gridPainter;
