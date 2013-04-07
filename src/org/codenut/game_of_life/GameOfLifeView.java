@@ -66,15 +66,10 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
         setOnTouchListener(this);
         getHolder().addCallback(this);
         gridPainter = new Paint();
-        gridPainter.setColor(Color.DKGRAY);
+        gridPainter.setColor(Color.argb(100, 100, 100, 100));
         cellPainter = new Paint();
-        cellPainter.setColor(Color.CYAN);
+        cellPainter.setColor(Color.argb(150, 100, 200, 200));
         thread = new GameThread(this);
-        world = new World();
-        new Glider().draw(world, 5, 3);
-        new Blinker().draw(world, 23, 12);
-        new Block().draw(world, 27, 29);
-        new BeeHive().draw(world, 13, 25);
     }
 
 
@@ -82,8 +77,12 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        int width = Math.min(world.getWidth() * CELL_SIZE, getMeasuredWidth());
-        int height = Math.min(world.getHeight() * CELL_SIZE, getMeasuredHeight());
+        if (world == null) {
+            createAppropriatelySizedWorld(getMeasuredWidth(), getMeasuredHeight());
+        }
+
+        int width = world.getWidth() * CELL_SIZE;
+        int height = world.getHeight() * CELL_SIZE;
 
         // draw canvas
         canvas.drawColor(Color.BLACK);
@@ -96,18 +95,20 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
 
         // draw living cells
         for (Cell cell : world.getLivingCells()) {
-            if (isWithinBounds(cell.getPosition(), width, height)) {
-                int left = cell.getPosition().getX() * CELL_SIZE + PADDING;
-                int top = cell.getPosition().getY() * CELL_SIZE + PADDING;
-                int right = left + CELL_SIZE - 2 * PADDING;
-                int bottom = top + CELL_SIZE - 2 * PADDING;
-                canvas.drawRect(new Rect(left, top, right, bottom), cellPainter);
-            }
+            int left = cell.getPosition().getX() * CELL_SIZE + PADDING;
+            int top = cell.getPosition().getY() * CELL_SIZE + PADDING;
+            int right = left + CELL_SIZE - 2 * PADDING;
+            int bottom = top + CELL_SIZE - 2 * PADDING;
+            canvas.drawRect(new Rect(left, top, right, bottom), cellPainter);
         }
     }
 
-    private boolean isWithinBounds(final Position position, int width, int height) {
-        return position.getX() >= 0 && position.getY() <= height/CELL_SIZE;
+    private void createAppropriatelySizedWorld(int measuredWidth, int measuredHeight) {
+        world = new World(measuredWidth / CELL_SIZE + 10, measuredHeight / CELL_SIZE + 10);
+        new Glider().draw(world, 5, 3);
+        new Blinker().draw(world, 23, 12);
+        new Block().draw(world, 27, 29);
+        new BeeHive().draw(world, 13, 25);
     }
 
     @Override

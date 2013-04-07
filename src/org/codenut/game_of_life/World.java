@@ -130,15 +130,24 @@ public class World {
     public void transition() {
         for (Cell cell : getDirtyCells()) {
             cell.transition();
-            if (cell.isAlive()) {
-                livingCells.put(cell.getPosition(), cell);
-            } else {
-                livingCells.remove(cell.getPosition());
-            }
+            trackLivingCell(cell);
         }
         dirtyCells = new HashMap<Position, Cell>();
     }
 
+    private void trackLivingCell(final Cell cell) {
+        if (cell.isAlive()) {
+            if (isWithinBounds(cell.getPosition())) {
+                livingCells.put(cell.getPosition(), cell);
+            }
+        } else {
+            livingCells.remove(cell.getPosition());
+        }
+    }
+
+    private boolean isWithinBounds(final Position position) {
+        return position.getX() <= width && position.getY() <= height;
+    }
 
     @Override
     public String toString() {
