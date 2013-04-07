@@ -39,7 +39,6 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
             this.shouldRun = shouldRun;
         }
 
-
         @Override
         public void run() {
             while (shouldRun) {
@@ -120,7 +119,17 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
+        boolean retry = true;
         thread.setRunning(false);
+        while (retry) {
+            try {
+                thread.interrupt();
+                thread.join();
+                retry = false;
+            } catch (InterruptedException e) {
+                // retry
+            }
+        }
     }
 
     @Override
