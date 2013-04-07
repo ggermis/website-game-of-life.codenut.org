@@ -46,7 +46,6 @@ public class World {
         return dirtyCells.values();
     }
 
-
     public boolean isDirty() {
         return getDirtyCells().size() > 0;
     }

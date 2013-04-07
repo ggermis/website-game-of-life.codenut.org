@@ -80,10 +80,6 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (world == null) {
-            return; // nothing to draw
-        }
-
         super.onDraw(canvas);
 
         int width = Math.min(world.getWidth() * CELL_SIZE, getMeasuredWidth());
@@ -100,12 +96,18 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
 
         // draw living cells
         for (Cell cell : world.getLivingCells()) {
-            int left = cell.getPosition().getX() * CELL_SIZE + PADDING;
-            int top = cell.getPosition().getY() * CELL_SIZE + PADDING;
-            int right = left + CELL_SIZE - 2 * PADDING;
-            int bottom = top + CELL_SIZE - 2 * PADDING;
-            canvas.drawRect(new Rect(left, top, right, bottom), cellPainter);
+            if (isWithinBounds(cell.getPosition(), width, height)) {
+                int left = cell.getPosition().getX() * CELL_SIZE + PADDING;
+                int top = cell.getPosition().getY() * CELL_SIZE + PADDING;
+                int right = left + CELL_SIZE - 2 * PADDING;
+                int bottom = top + CELL_SIZE - 2 * PADDING;
+                canvas.drawRect(new Rect(left, top, right, bottom), cellPainter);
+            }
         }
+    }
+
+    private boolean isWithinBounds(final Position position, int width, int height) {
+        return position.getX() >= 0 && position.getY() <= height/CELL_SIZE;
     }
 
     @Override
