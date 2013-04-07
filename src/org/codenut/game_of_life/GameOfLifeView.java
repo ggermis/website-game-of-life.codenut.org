@@ -144,7 +144,7 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
         new Blinker().draw(world, 13, 12);
         new Block().draw(world, 14, 10);
         new BeeHive().draw(world, 17, 15);
-        world.tick();
+        world.transition();
     }
 
 

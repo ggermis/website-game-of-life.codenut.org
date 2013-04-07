@@ -3,8 +3,8 @@ package org.codenut.game_of_life;
 
 import org.codenut.game_of_life.ruleset.DefaultRuleSet;
 import org.codenut.game_of_life.ruleset.RuleSet;
-
 import java.util.*;
+
 
 public class World {
 
@@ -90,7 +90,7 @@ public class World {
     }
 
 
-    public List<Cell> getNeighboursOf(final Cell cell) {
+    private List<Cell> getNeighboursOf(final Cell cell) {
         List<Cell> neighbours = new ArrayList<Cell>();
         for (Position neighbourPosition : cell.getPosition().getAllNeighbourPositions()) {
             neighbours.add(getCellAt(neighbourPosition));
@@ -109,16 +109,22 @@ public class World {
     }
 
 
-    public boolean tick() {
-        applyRules();
-        return transition();
-    }
-
     public void applyRules() {
         for (Cell cell : getCellsToApplyRulesTo()) {
             ruleSet.apply(this, cell);
         }
     }
+
+    public boolean transition() {
+        boolean wasDirty = isDirty();
+        for (Cell cell : getDirtyCells()) {
+            cell.transition();
+            trackLivingCell(cell);
+        }
+        dirtyCells = new HashMap<Position, Cell>();
+        return wasDirty;
+    }
+
 
     private Set<Cell> getCellsToApplyRulesTo() {
         Set<Cell> cells = new HashSet<Cell>();
@@ -131,15 +137,6 @@ public class World {
         return cells;
     }
 
-    public boolean transition() {
-        boolean wasDirty = isDirty();
-        for (Cell cell : getDirtyCells()) {
-            cell.transition();
-            trackLivingCell(cell);
-        }
-        dirtyCells = new HashMap<Position, Cell>();
-        return wasDirty;
-    }
 
     private void trackLivingCell(final Cell cell) {
         if (cell.isAlive()) {

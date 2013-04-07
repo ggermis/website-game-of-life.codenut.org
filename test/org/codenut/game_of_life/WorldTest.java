@@ -2,7 +2,6 @@ package org.codenut.game_of_life;
 
 
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 
@@ -28,27 +27,6 @@ public class WorldTest {
         final Cell cell = world.getCellAt(3, 4);
         Assert.assertEquals(3, cell.getPosition().getX());
         Assert.assertEquals(4, cell.getPosition().getY());
-    }
-
-    @DataProvider(name = "neighbourCountDataProvider")
-    public Object[][] neighbourCountDataProvider() {
-        final World world = new World(10, 10);
-        return new Object[][] {
-                { world, new Cell(new Position(3, 2)), 8 }, // center
-                { world, new Cell(new Position(0, 0)), 8 }, // top left
-                { world, new Cell(new Position(3, 0)), 8 }, // top
-                { world, new Cell(new Position(world.getWidth()-1, 0)), 8 }, // top right
-                { world, new Cell(new Position(world.getWidth()-1, 3)), 8 }, // right
-                { world, new Cell(new Position(world.getWidth()-1, world.getHeight()-1)), 8 }, // bottom right
-                { world, new Cell(new Position(3, world.getHeight()-1)), 8 }, // bottom
-                { world, new Cell(new Position(0, world.getHeight()-1)), 8 }, // bottom left
-                { world, new Cell(new Position(0, 3)), 8 }, // left
-        };
-    }
-
-    @Test(dataProvider = "neighbourCountDataProvider")
-    public void countNeighbours(final World world, final Cell cell, final int expectedNeighbours) {
-        Assert.assertEquals(expectedNeighbours, world.getNeighboursOf(cell).size());
     }
 
     @Test
