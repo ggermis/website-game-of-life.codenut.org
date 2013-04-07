@@ -21,19 +21,19 @@ public class PositionTest {
     public Object[][] neighbourPositionDataProvider() {
         final Position position = new Position(5, 3);
         return new Object[][] {
-                { position, Position.Border.NORTH, new Position(position.getX(), position.getY()-1)},
-                { position, Position.Border.NORTH_EAST, new Position(position.getX()+1, position.getY()-1)},
-                { position, Position.Border.EAST, new Position(position.getX()+1, position.getY())},
-                { position, Position.Border.SOUTH_EAST, new Position(position.getX()+1, position.getY()+1)},
-                { position, Position.Border.SOUTH, new Position(position.getX(), position.getY()+1)},
-                { position, Position.Border.SOUTH_WEST, new Position(position.getX()-1, position.getY()+1)},
-                { position, Position.Border.WEST, new Position(position.getX()-1, position.getY())},
-                { position, Position.Border.NORTH_WEST, new Position(position.getX()-1, position.getY()-1)},
+                { position, Border.NORTH, new Position(position.getX(), position.getY()-1)},
+                { position, Border.NORTH_EAST, new Position(position.getX()+1, position.getY()-1)},
+                { position, Border.EAST, new Position(position.getX()+1, position.getY())},
+                { position, Border.SOUTH_EAST, new Position(position.getX()+1, position.getY()+1)},
+                { position, Border.SOUTH, new Position(position.getX(), position.getY()+1)},
+                { position, Border.SOUTH_WEST, new Position(position.getX()-1, position.getY()+1)},
+                { position, Border.WEST, new Position(position.getX()-1, position.getY())},
+                { position, Border.NORTH_WEST, new Position(position.getX()-1, position.getY()-1)},
         };
     }
 
     @Test(dataProvider = "neighbourPositionDataProvider")
-    public void neighbourPosition(final Position position, final Position.Border border, final Position expectedPosition) {
+    public void neighbourPosition(final Position position, final Border border, final Position expectedPosition) {
         Assert.assertEquals(expectedPosition, position.getNeighbourPosition(border));
     }
 

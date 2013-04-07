@@ -7,10 +7,6 @@ import java.util.List;
 
 public class Position {
 
-    public enum Border {
-        NORTH, NORTH_EAST, EAST, SOUTH_EAST, SOUTH, SOUTH_WEST, WEST, NORTH_WEST
-    }
-
     private int x;
     private int y;
 
