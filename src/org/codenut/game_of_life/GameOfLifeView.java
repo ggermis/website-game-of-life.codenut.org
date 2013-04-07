@@ -52,8 +52,7 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
                 try {
                     world.applyRules();
                     drawSurface(getHolder());
-                    boolean worldChanged = world.transition();
-                    if (!worldChanged) {
+                    if (! world.transition()) {
                         handler.post(new Runnable() {
                             @Override
                             public void run() {
