@@ -1,25 +1,27 @@
 package org.codenut.game_of_life;
 
 import android.content.Context;
-import android.graphics.*;
-import android.os.Handler;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
-import android.widget.Toast;
 import org.codenut.game_of_life.pattern.BeeHive;
 import org.codenut.game_of_life.pattern.Blinker;
 import org.codenut.game_of_life.pattern.Block;
 import org.codenut.game_of_life.pattern.Glider;
 
 
-public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callback, View.OnTouchListener {
+public class GameOfLifeView extends SurfaceView implements Runnable, View.OnTouchListener {
 
     private final int PADDING = 1;
     private final int CELL_SIZE = 15;
     private final long SLEEP = 50;
+
 
     private Paint gridPainter;
     private Paint cellPainter;
@@ -27,52 +29,14 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
     private Paint dirtyDeadCellPainter;
 
     private World world;
-    private GameThread thread;
+    private Thread thread;
+
+    private boolean shouldRun;
+    private final SurfaceHolder holder;
 
 
-    private class GameThread extends Thread {
-        private boolean shouldRun = true;
-        private Handler handler;
-
-        public GameThread() {
-            this.handler = new Handler();
-        }
-
-        public void setRunning(final boolean shouldRun) {
-            this.shouldRun = shouldRun;
-        }
-
-        public boolean isRunning() {
-            return shouldRun;
-        }
-
-        @Override
-        public void run() {
-            while (shouldRun) {
-                try {
-                    world.applyRules();
-                    drawSurface(getHolder());
-                    if (! world.transition()) {
-                        handler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(getContext(), "Done", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                        setRunning(false);
-                    }
-                    sleep(SLEEP);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
-    public GameOfLifeView(Context context, AttributeSet attributes) {
-        super(context, attributes);
-        setOnTouchListener(this);
-        getHolder().addCallback(this);
+    public GameOfLifeView(Context context, AttributeSet attrs) {
+        super(context, attrs);
         gridPainter = new Paint();
         gridPainter.setColor(Color.argb(150, 100, 100, 100));
         cellPainter = new Paint();
@@ -84,17 +48,71 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
         dirtyDeadCellPainter = new Paint();
         dirtyDeadCellPainter.setAntiAlias(true);
         dirtyDeadCellPainter.setColor(Color.argb(120, 100, 200, 200));
+        holder = getHolder();
     }
 
 
     @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
+    public void run() {
+        while (shouldRun) {
+            // Make sure there is a surface to draw on
+            if (!holder.getSurface().isValid()) {
+                SystemClock.sleep(50);
+                continue;
+            }
 
-        // idea can't render the view otherwise
-        if (world == null) {
-            createAppropriatelySizedWorld(getMeasuredWidth(), getMeasuredHeight());
+            world.applyRules();
+            draw();
+            if (! world.transition()) {
+                setRunning(false);
+            }
+
+            // Wait
+            SystemClock.sleep(SLEEP);
         }
+    }
+
+
+    public void pause() {
+        setRunning(false);
+        while(true) {
+            try {
+                thread.join();
+                break;
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        thread = null;
+    }
+
+    public void resume() {
+        setRunning(true);
+        thread = new Thread(this);
+        thread.start();
+    }
+
+
+    public void setRunning(final boolean running) {
+        this.shouldRun = running;
+    }
+
+
+    private void draw() {
+        Canvas canvas = null;
+        try {
+            canvas = holder.lockCanvas();
+            synchronized (holder) {
+                drawTheWorld(canvas);
+            }
+        } finally {
+            if (canvas != null) {
+                holder.unlockCanvasAndPost(canvas);
+            }
+        }
+    }
+
+    private void drawTheWorld(Canvas canvas) {
 
         int width = world.getWidth() * CELL_SIZE;
         int height = world.getHeight() * CELL_SIZE;
@@ -134,74 +152,44 @@ public class GameOfLifeView extends SurfaceView implements SurfaceHolder.Callbac
 
     }
 
-    private void createAppropriatelySizedWorld(int measuredWidth, int measuredHeight) {
-        world = new World(measuredWidth / CELL_SIZE, measuredHeight / CELL_SIZE);
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        world = getAppropriatelySizedWorld(getMeasuredWidth(), getMeasuredHeight());
+    }
+
+    private World getAppropriatelySizedWorld(int measuredWidth, int measuredHeight) {
+        if (world != null) {
+            return world;
+        }
+        World world = new World(measuredWidth / CELL_SIZE, measuredHeight / CELL_SIZE);
         new Glider().draw(world, 13, 16);
         new Blinker().draw(world, 13, 12);
         new Block().draw(world, 14, 10);
         new BeeHive().draw(world, 17, 15);
         world.transition();
+        return world;
     }
 
-
-    private void drawSurface(SurfaceHolder holder) {
-        Canvas canvas = null;
-        try {
-            canvas = holder.lockCanvas();
-            synchronized (holder) {
-                onDraw(canvas);
-            }
-        } finally {
-            if (canvas != null) {
-                holder.unlockCanvasAndPost(canvas);
-            }
-        }
-    }
-
-    @Override
-    public void surfaceCreated(SurfaceHolder holder) {
-        createAppropriatelySizedWorld(getMeasuredWidth(), getMeasuredHeight());
-        drawSurface(holder);
-    }
-
-    @Override
-    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-    }
-
-    @Override
-    public void surfaceDestroyed(SurfaceHolder holder) {
-        stop();
-    }
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            Cell cell = world.getCellAt((int)(event.getX() / CELL_SIZE), (int)(event.getY() / CELL_SIZE));
-            world.toggle(cell);
-            drawSurface(getHolder());
+        SystemClock.sleep(10);
+
+        Cell cell = world.getCellAt((int)(event.getX() / CELL_SIZE), (int)(event.getY() / CELL_SIZE));
+
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                world.toggle(cell);
+                break;
+            case MotionEvent.ACTION_MOVE:
+                world.toggle(cell);
+                break;
         }
+
+        draw();
         return true;
-    }
-
-    public void stop() {
-        boolean retry = true;
-        if (thread.isRunning()) {
-            thread.setRunning(false);
-            while (retry) {
-                try {
-                    thread.interrupt();
-                    thread.join();
-                    retry = false;
-                } catch (InterruptedException e) {
-                    // retry
-                }
-            }
-        }
-    }
-
-    public void start() {
-        thread = new GameThread();
-        thread.start();
     }
 }
 

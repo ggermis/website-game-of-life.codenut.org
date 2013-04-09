@@ -65,7 +65,7 @@ public class World {
     }
 
 
-    public void toggle(Cell cell) {
+    public synchronized void toggle(Cell cell) {
         if (cell.isAlive()) {
             setDead(cell);
         } else {
@@ -77,7 +77,7 @@ public class World {
         return trackLivingCell(cell.setAlive());
     }
 
-    public Cell markAlive(int x, int y) {
+    public synchronized Cell markAlive(int x, int y) {
         return markAlive(getCellAt(x, y));
     }
 
@@ -117,13 +117,13 @@ public class World {
     }
 
 
-    public void applyRules() {
+    public synchronized void applyRules() {
         for (Cell cell : getCellsToApplyRulesTo()) {
             ruleSet.apply(this, cell);
         }
     }
 
-    public boolean transition() {
+    public synchronized boolean transition() {
         boolean wasDirty = isDirty();
         for (Cell cell : getDirtyCells()) {
             trackLivingCell(cell.transition());

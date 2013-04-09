@@ -17,19 +17,34 @@ public class GameOfLife extends Activity implements View.OnClickListener {
         setContentView(R.layout.main);
 
         gameOfLifeView = (GameOfLifeView) findViewById(R.id.game_of_life_view);
-        stopButton = (Button) findViewById(R.id.button);
+        gameOfLifeView.setOnTouchListener(gameOfLifeView);
 
+        stopButton = (Button) findViewById(R.id.button);
         stopButton.setOnClickListener(this);
     }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        gameOfLifeView.pause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        gameOfLifeView.resume();
+    }
+
 
     @Override
     public void onClick(View v) {
         Button button = (Button)v;
         if (button.getText().equals("Stop")) {
-            gameOfLifeView.stop();
+            gameOfLifeView.pause();
             button.setText("Start");
         } else {
-            gameOfLifeView.start();
+            gameOfLifeView.resume();
             button.setText("Stop");
         }
     }
